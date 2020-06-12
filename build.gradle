@@ -1,0 +1,18 @@
+buildscript {
+    apply from: 'mvvm/dependencies.gradle'
+
+    addRepository(repositories)
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:3.6.3"
+        classpath Deps.kotlinPlugin
+    }
+}
+
+allprojects {
+    addRepository(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

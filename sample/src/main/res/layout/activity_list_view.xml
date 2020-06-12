@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.imyyq.sample.ListViewViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--将 app: 属性改成相应 vm 的字段，即可测试不同的绑定类型-->
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:itemBinding="@{viewModel.multipleItems}"
+            app:itemTypeCount="@{viewModel.multipleItems.itemTypeCount()}"
+            app:items="@{viewModel.itemAny}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+必须用 layout 包裹，DataBinding 的相关知识请自行查阅。
+-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <!--
+        声明变量，通常有 vm 的界面，都需要声明对应的 vm 变量
+        在构造界面时把该变量传给 BaseXXXX
+        -->
+        <variable
+            name="viewModel"
+            type="com.imyyq.sample.MainViewModel"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        >
+
+        <Button
+            onClickCommand="@{viewModel.onBasic}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="基本的使用"
+            />
+
+        <Button
+            onClickCommand="@{viewModel.onListView}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ListView"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RecyclerView"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewPager"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewPager2"
+            />
+
+        <Button
+            onClickCommand="@{viewModel.onNetwork}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网络请求"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="数据库使用"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+    </LinearLayout>
+</layout>
