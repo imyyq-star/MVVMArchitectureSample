@@ -1,5 +1,5 @@
 buildscript {
-    apply from: 'mvvm/dependencies.gradle'
+    apply from: 'MVVMArchitecture/dependencies.gradle'
 
     addRepository(repositories)
 
