@@ -6,9 +6,6 @@ import android.util.Log
 import android.view.View
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
-import com.imyyq.mvvm.binding.command.BindingAction
-import com.imyyq.mvvm.binding.command.BindingCommand
-import com.imyyq.mvvm.binding.command.BindingConsumer
 import com.imyyq.sample.app.MyApp
 
 /**
@@ -18,25 +15,19 @@ import com.imyyq.sample.app.MyApp
  */
 class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
-    val onNetwork = BindingCommand(object : BindingConsumer<View> {
-        override fun call(t: View) {
-            startActivity(NetworkActivity::class.java)
-        }
-    })
+    val onNetwork = View.OnClickListener {
+        startActivity(NetworkActivity::class.java)
+    }
 
-    val onBasic = BindingCommand(object : BindingConsumer<View> {
-        override fun call(t: View) {
-            showDialog()
-            // 可以携带参数
-            startActivity(BasicActivity::class.java, Bundle.EMPTY)
-        }
-    })
+    val onBasic = View.OnClickListener {
+        showDialog()
+        // 可以携带参数
+        startActivity(BasicActivity::class.java, Bundle.EMPTY)
+    }
 
-    val onListView = BindingCommand<View>(object : BindingAction {
-        override fun call() {
-            startActivity(ListViewActivity::class.java)
-        }
-    })
+    val onListView = View.OnClickListener {
+        startActivity(ListViewActivity::class.java)
+    }
 
     /**
      * vm 可以感知 v 的生命周期

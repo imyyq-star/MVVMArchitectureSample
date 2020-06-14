@@ -2,10 +2,12 @@ package com.imyyq.sample
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModelStoreOwner
 import com.imyyq.mvvm.base.BaseActivity
+import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
 import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
 
@@ -69,6 +71,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
      * 这个方法被调用时，此时界面已经初始化完毕了，可以进行获取数据的操作了，比如请求网络。
      */
     override fun initData() {
+        //指定某控件点击间隔时间：1000毫秒
+        mBinding.btn.clickWithTrigger(1000, View.OnClickListener {
+            Log.i("MainActivity", "initData: ")
+        })
     }
 
     /**

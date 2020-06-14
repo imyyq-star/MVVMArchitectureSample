@@ -1,6 +1,7 @@
 package com.imyyq.sample
 
 import android.app.Application
+import android.view.View
 import androidx.databinding.ObservableField
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
@@ -11,6 +12,10 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     val mText = ObservableField<String>()
     // 还可以使用 LiveData
     val mImageUrl = SingleLiveEvent<String>()
+
+    val onImageClick = View.OnClickListener {
+        mImageUrl.value = null
+    }
 
     init {
         mText.set("我是一个文本，引用了 vm 的可观察字段，当字段更新，我将自动更新")

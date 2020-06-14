@@ -13,6 +13,7 @@ include {
     // 通常来说以上都需要为 true
 
     bindingCollection {
+        bindingAdapter=true
         bindingAdapterRv=true
         bindingAdapterVp2=false
     }
