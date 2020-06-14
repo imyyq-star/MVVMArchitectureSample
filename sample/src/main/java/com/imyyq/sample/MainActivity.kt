@@ -9,7 +9,7 @@ import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
 import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
-import lib.common.app.CaptureAndCropManager
+import com.imyyq.mvvm.utils.CaptureAndCropManager
 
 /**
  * View 层需要继承相应的基类：BaseFragment/BaseActivity
