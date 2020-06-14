@@ -12,7 +12,7 @@ class MyApp : BaseApp() {
         // BaseApp.initApp(this)
 
         // 网络请求需设置 baseUrl
-        HttpRequest.setHost("https://www.wanandroid.com/")
+        HttpRequest.mDefaultBaseUrl = "https://www.wanandroid.com/"
 
         // 可追踪应用的是在前台还是后台
         AppStateTracker.track(object : AppStateTracker.AppStateChangeListener {

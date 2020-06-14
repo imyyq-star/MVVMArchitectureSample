@@ -1,9 +1,12 @@
 package com.imyyq.sample
 
+import android.content.Context
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModelStoreOwner
 import com.imyyq.mvvm.base.BaseActivity
+import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
 
 /**
@@ -24,6 +27,22 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
     // 是否保持界面常亮。
     override fun isKeepScreenOn(): Boolean {
         return super.isKeepScreenOn()
+    }
+
+    // 是否需要对话框
+    override fun isNeedDialog(): Boolean {
+        return super.isNeedDialog()
+    }
+
+    // vm 是否需要启动和结束界面
+    override fun isViewModelNeedStartAndFinish(): Boolean {
+        return super.isViewModelNeedStartAndFinish()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 操控 systemUI
+        SystemUIUtil.fullscreenImmersive(window)
     }
 
     /**
