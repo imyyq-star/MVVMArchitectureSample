@@ -1,15 +1,15 @@
 package com.imyyq.sample
 
-import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.content.edit
 import androidx.lifecycle.ViewModelStoreOwner
 import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
 import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
+import lib.common.app.CaptureAndCropManager
 
 /**
  * View 层需要继承相应的基类：BaseFragment/BaseActivity
@@ -32,8 +32,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
     }
 
     // 是否需要对话框
-    override fun isNeedDialog(): Boolean {
-        return super.isNeedDialog()
+    override fun isNeedLoadingDialog(): Boolean {
+        return super.isNeedLoadingDialog()
     }
 
     // vm 是否需要启动和结束界面
@@ -74,7 +74,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
         //指定某控件点击间隔时间：1000毫秒
         mBinding.btn.clickWithTrigger(1000, View.OnClickListener {
             Log.i("MainActivity", "initData: ")
+            CaptureAndCropManager.capturePhotoFromCamera(this, 100)
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
     }
 
     /**

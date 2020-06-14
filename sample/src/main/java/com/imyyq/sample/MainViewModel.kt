@@ -20,7 +20,6 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     }
 
     val onBasic = View.OnClickListener {
-        showDialog()
         // 可以携带参数
         startActivity(BasicActivity::class.java, Bundle.EMPTY)
     }

@@ -26,7 +26,7 @@ include {
     retrofit2=true
     gson=true
     glide=true
-    livePermissions=false
+    livePermissions=true
     paging=false
     rxJava2=false
     rxKotlin=false
