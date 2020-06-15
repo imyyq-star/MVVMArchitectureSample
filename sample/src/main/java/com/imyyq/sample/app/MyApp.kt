@@ -25,6 +25,9 @@ class MyApp : BaseApp() {
             ErrorCallback::class.java
         )
 
+        GlobalConfig.isViewModelNeedStartAndFinish = true
+        GlobalConfig.isNeedLoadingDialog = true
+
         // 可追踪应用的是在前台还是后台
         AppStateTracker.track(object : AppStateTracker.AppStateChangeListener {
             override fun appTurnIntoForeground() {

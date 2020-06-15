@@ -61,6 +61,7 @@
 
         <Button
             onClickCommand="@{viewModel.onNetwork}"
+            isInterval="@{false}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="网络请求"
