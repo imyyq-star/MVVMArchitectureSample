@@ -15,4 +15,8 @@ class BasicActivity : BaseActivity<ActivityBasicBinding, BasicViewModel>(
         val bundle = getBundle(this)
         Log.i("BasicActivity", "commonLog - initParam: $bundle")
     }
+
+    override fun isSupportSwipe(): Boolean {
+        return true
+    }
 }

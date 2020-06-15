@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelStoreOwner
 import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
+import com.imyyq.mvvm.utils.CaptureAndCropManager
 import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
-import com.imyyq.mvvm.utils.CaptureAndCropManager
 
 /**
  * View 层需要继承相应的基类：BaseFragment/BaseActivity
@@ -71,6 +71,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
      * 这个方法被调用时，此时界面已经初始化完毕了，可以进行获取数据的操作了，比如请求网络。
      */
     override fun initData() {
+        super.initData()
         //指定某控件点击间隔时间：1000毫秒
         mBinding.btn.clickWithTrigger(1000, View.OnClickListener {
             Log.i("MainActivity", "initData: ")

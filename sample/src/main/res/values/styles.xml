@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--TODO 要想实现侧滑返回，activity的背景必须透明-->
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
 </resources>

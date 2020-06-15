@@ -20,6 +20,7 @@
         <activity android:name=".NetworkActivity" />
         <activity android:name=".BasicActivity" />
         <activity android:name=".ListViewActivity" />
+        <activity android:name=".loadsir.LoadSirActivity" />
     </application>
 
 </manifest>

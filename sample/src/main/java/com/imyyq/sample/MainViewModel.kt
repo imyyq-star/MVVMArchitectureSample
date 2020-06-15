@@ -7,6 +7,7 @@ import android.view.View
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.app.MyApp
+import com.imyyq.sample.loadsir.LoadSirActivity
 
 /**
  * ViewModel 层需要继承 BaseViewModel。最终继承自 AndroidViewModel，这样可拥有 Application 的实例。
@@ -17,6 +18,10 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onNetwork = View.OnClickListener {
         startActivity(NetworkActivity::class.java)
+    }
+
+    val onLoadSir = View.OnClickListener {
+        startActivity(LoadSirActivity::class.java)
     }
 
     val onBasic = View.OnClickListener {

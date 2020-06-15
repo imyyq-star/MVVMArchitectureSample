@@ -23,6 +23,7 @@ include {
 
     room=false
     swipeRefreshLayout=false
+    slidingPaneLayout=true
     retrofit2=true
     gson=true
     glide=true
@@ -30,6 +31,8 @@ include {
     paging=false
     rxJava2=false
     rxKotlin=false
+
+    loadSir=true
 
     reactiveStreamsKTX=false
 
