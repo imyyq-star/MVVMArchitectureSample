@@ -42,18 +42,21 @@
             />
 
         <Button
+            onClickCommand="@{viewModel.onRv}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RecyclerView"
             />
 
         <Button
+            onClickCommand="@{viewModel.onVp}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ViewPager"
             />
 
         <Button
+            onClickCommand="@{viewModel.onVp2}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ViewPager2"

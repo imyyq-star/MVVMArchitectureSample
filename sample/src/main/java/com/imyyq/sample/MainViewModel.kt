@@ -8,6 +8,9 @@ import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.app.MyApp
 import com.imyyq.sample.loadsir.LoadSirActivity
+import com.imyyq.sample.rv.RecyclerViewActivity
+import com.imyyq.sample.vp.ViewPager2Activity
+import com.imyyq.sample.vp.ViewPagerActivity
 
 /**
  * ViewModel 层需要继承 BaseViewModel。最终继承自 AndroidViewModel，这样可拥有 Application 的实例。
@@ -31,6 +34,18 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onListView = View.OnClickListener {
         startActivity(ListViewActivity::class.java)
+    }
+
+    val onRv = View.OnClickListener {
+        startActivity(RecyclerViewActivity::class.java)
+    }
+
+    val onVp = View.OnClickListener {
+        startActivity(ViewPagerActivity::class.java)
+    }
+
+    val onVp2 = View.OnClickListener {
+        startActivity(ViewPager2Activity::class.java)
     }
 
     /**

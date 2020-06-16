@@ -15,11 +15,11 @@ include {
     bindingCollection {
         bindingAdapter=true
         bindingAdapterRv=true
-        bindingAdapterVp2=false
+        bindingAdapterVp2=true
     }
     recyclerView=true
     material=false
-    viewPager2=false
+    viewPager2=true
 
     room=false
     swipeRefreshLayout=false

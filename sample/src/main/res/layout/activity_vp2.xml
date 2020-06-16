@@ -5,12 +5,9 @@
 
     <data>
 
-        <import type="com.imyyq.mvvm.binding.viewadapter.recyclerview.LayoutManagers" />
-        <import type="com.imyyq.mvvm.binding.viewadapter.recyclerview.LineManagers" />
-
         <variable
             name="viewModel"
-            type="com.imyyq.sample.rv.RecyclerViewViewModel"
+            type="com.imyyq.sample.vp.ViewPagerViewModel"
             />
     </data>
 
@@ -19,13 +16,11 @@
         android:layout_height="match_parent"
         >
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:itemBinding="@{viewModel.multipleItems}"
-            app:items="@{viewModel.observableList}"
-            app:layoutManager="@{LayoutManagers.grid(6, viewModel.spanSizeLookup)}"
-            app:lineManager="@{LineManagers.vertical()}"
+            app:itemBinding="@{viewModel.pageItem}"
+            app:items="@{viewModel.items}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

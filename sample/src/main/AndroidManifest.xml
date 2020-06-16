@@ -21,6 +21,9 @@
         <activity android:name=".BasicActivity" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".loadsir.LoadSirActivity" />
+        <activity android:name=".rv.RecyclerViewActivity" />
+        <activity android:name=".vp.ViewPagerActivity" />
+        <activity android:name=".vp.ViewPager2Activity" />
     </application>
 
 </manifest>
