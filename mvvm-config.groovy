@@ -21,7 +21,7 @@ include {
     material=false
     viewPager2=true
 
-    room=false
+    room=true
     swipeRefreshLayout=false
     slidingPaneLayout=true
     retrofit2=true
