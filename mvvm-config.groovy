@@ -22,11 +22,13 @@ include {
     viewPager2=true
 
     room=true
+    roomRxJava=false
     swipeRefreshLayout=false
     slidingPaneLayout=true
     retrofit2=true
     gson=true
     glide=true
+    retrofit2RxJava2=true
     livePermissions=true
     paging=false
     rxJava2=false
