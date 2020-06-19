@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.viewModelScope
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.data.Repository
 import com.imyyq.sample.entity.handleResult
@@ -29,6 +30,22 @@ class NetworkViewModel(app: Application, model: Repository) : BaseViewModel<Repo
                     Log.i("NetworkViewModel", "commonLog - onFailed: $code, $msg")
                 }
             )
+
+            val entity2 = mModel.login2("userName", "pwd")
+            when (entity2) {
+                is NetworkResponse.Success -> {
+                    Log.i("NetworkViewModel", "commonLog - Success: ${entity2.body}")
+                }
+                is NetworkResponse.ServerError -> {
+                    Log.i("NetworkViewModel", "commonLog - ServerError: ${entity2.body}")
+                }
+                is NetworkResponse.NetworkError -> {
+                    Log.i("NetworkViewModel", "commonLog - NetworkError: ${entity2.error}")
+                }
+                is NetworkResponse.UnknownError -> {
+                    Log.i("NetworkViewModel", "commonLog - NetworkError: ${entity2.error}")
+                }
+            }
             delay(2000)
             dismissDialog()
         }

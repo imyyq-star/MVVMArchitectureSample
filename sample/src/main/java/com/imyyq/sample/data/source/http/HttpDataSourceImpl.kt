@@ -1,5 +1,6 @@
 package com.imyyq.sample.data.source.http
 
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.imyyq.sample.data.source.HttpDataSource
 import com.imyyq.sample.data.source.http.service.WanAndroidApiService
 import com.imyyq.sample.entity.BaseEntity
@@ -15,5 +16,9 @@ object HttpDataSourceImpl : HttpDataSource {
         } catch (e: Exception) {
             handleException(e)
         }
+    }
+
+    override suspend fun login2(userName: String, pwd: String): NetworkResponse<BaseEntity<List<FriendWebSiteEntity?>?>, BaseEntity<List<FriendWebSiteEntity?>?>> {
+        return wanAndroidApiService.login2(userName, pwd)
     }
 }
