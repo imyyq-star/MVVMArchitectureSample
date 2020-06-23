@@ -38,9 +38,10 @@ include {
 
     reactiveStreamsKTX=false
 
-    natigationUiKTX=false
-    natigationRuntimeKTX=false
-    natigationFragmentKTX=false
+    natigation=true
+    natigationUiKTX=true
+    natigationRuntimeKTX=true
+    natigationFragmentKTX=true
 
     roomKTX=false
     sqliteKTX=false
