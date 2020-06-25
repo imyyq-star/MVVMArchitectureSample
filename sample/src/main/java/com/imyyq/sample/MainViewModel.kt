@@ -10,6 +10,7 @@ import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.app.MyApp
 import com.imyyq.sample.db.DBActivity
 import com.imyyq.sample.loadsir.LoadSirActivity
+import com.imyyq.sample.nav.NavActivity
 import com.imyyq.sample.rv.RecyclerViewActivity
 import com.imyyq.sample.vp.ViewPager2Activity
 import com.imyyq.sample.vp.ViewPagerActivity
@@ -52,6 +53,10 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onDatabase = View.OnClickListener {
         startActivity(DBActivity::class.java)
+    }
+
+    val onNav = View.OnClickListener {
+        startActivity(NavActivity::class.java)
     }
 
     /**

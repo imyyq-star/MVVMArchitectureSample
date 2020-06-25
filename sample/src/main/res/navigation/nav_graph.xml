@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/launcher_home"
+    >
+    <!--视图1-->
+    <fragment
+        android:id="@+id/launcher_home"
+        android:name="com.imyyq.sample.nav.StartFragment"
+        android:label="Home"
+        >
+
+        <!--
+        这个动作
+        app:destination="@id/end_dest" 跳转到为end_dest的视图
+
+        app:popEnterAnim 可以添加转场动画
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+
+        app:popUpTo="@+id/match"
+        app:popUpToInclusive="false"
+        -->
+        <action
+            android:id="@+id/end_action"
+            app:destination="@id/end_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+
+    </fragment>
+
+    <!--视图2-->
+    <fragment
+        android:id="@+id/end_dest"
+        android:name="com.imyyq.sample.nav.SecondFragment"
+        android:label="End"
+        >
+
+        <argument
+            android:name="userName"
+            android:defaultValue="name"
+            />
+        <deepLink app:uri="www.example.com/user/{userName}" />
+
+    </fragment>
+</navigation>

@@ -1,5 +1,6 @@
 package com.imyyq.sample.data
 
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.sample.data.source.HttpDataSource
 import com.imyyq.sample.data.source.LocalDataSource
@@ -16,6 +17,13 @@ object Repository :
 
     override suspend fun login(userName: String, pwd: String): BaseEntity<List<FriendWebSiteEntity?>?>? {
         return httpDataSource.login(userName, pwd)
+    }
+
+    override suspend fun login2(
+        userName: String,
+        pwd: String
+    ): NetworkResponse<BaseEntity<List<FriendWebSiteEntity?>?>, BaseEntity<List<FriendWebSiteEntity?>?>> {
+        return httpDataSource.login2(userName, pwd)
     }
 
     override fun saveUserName(userName: String?) {

@@ -1,5 +1,6 @@
 package com.imyyq.sample.data.source.http.service
 
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.imyyq.sample.entity.BaseEntity
 import com.imyyq.sample.entity.FriendWebSiteEntity
 import retrofit2.http.GET
@@ -12,4 +13,10 @@ interface WanAndroidApiService {
         @Query("userName") userName: String,
         @Query("pwd") pwd: String
     ): BaseEntity<List<FriendWebSiteEntity?>?>?
+
+    @GET("friend/json2")
+    suspend fun login2(
+        @Query("userName") userName: String,
+        @Query("pwd") pwd: String
+    ): NetworkResponse<BaseEntity<List<FriendWebSiteEntity?>?>, BaseEntity<List<FriendWebSiteEntity?>?>>
 }
