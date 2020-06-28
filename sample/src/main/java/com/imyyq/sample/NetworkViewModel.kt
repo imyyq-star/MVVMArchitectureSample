@@ -3,6 +3,7 @@ package com.imyyq.sample
 import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.imyyq.mvvm.base.BaseViewModel
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
 class NetworkViewModel(app: Application, model: Repository) : BaseViewModel<Repository>(app, model) {
     val resultCode = ObservableField<String>()
 
-    override fun onResume() {
+    override fun onResume(owner: LifecycleOwner) {
         // 使用 vm 的协程，可以在界面销毁时自动取消该协程
         viewModelScope.launch {
             showLoadingDialog()

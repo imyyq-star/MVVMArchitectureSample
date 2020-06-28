@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.LifecycleOwner
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.app.MyApp
@@ -62,7 +63,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     /**
      * vm 可以感知 v 的生命周期
      */
-    override fun onResume() {
+    override fun onResume(owner: LifecycleOwner) {
         // 注意！！！！！ vm 层绝对不可以引用 v 层的实例，需要 context 要么通过 application，要么通过 AppActivityManager
         val app = getApplication<MyApp>()
         Log.i("MainViewModel", "commonLog - onResume: $app")
@@ -71,7 +72,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     /**
      * 这个是对应的界面调用 onDestroy 时的回调
      */
-    override fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
     }
 
     override fun onActivityResult(resultCode: Int, intent: Intent) {
