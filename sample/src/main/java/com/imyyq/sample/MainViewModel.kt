@@ -1,6 +1,7 @@
 package com.imyyq.sample
 
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -31,7 +32,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onBasic = View.OnClickListener {
         // 可以携带参数
-        startActivity(BasicActivity::class.java, Bundle.EMPTY)
+        startActivityForResult(BasicActivity::class.java, Bundle.EMPTY)
     }
 
     val onListView = View.OnClickListener {
@@ -71,6 +72,10 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
      * 这个是对应的界面调用 onDestroy 时的回调
      */
     override fun onDestroy() {
+    }
+
+    override fun onActivityResult(resultCode: Int, intent: Intent) {
+        Log.i("MainViewModel", "onActivityResult: $resultCode, $intent")
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.imyyq.sample
 
+import android.app.Activity
 import android.util.Log
 import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.sample.databinding.ActivityBasicBinding
@@ -18,5 +19,10 @@ class BasicActivity : BaseActivity<ActivityBasicBinding, BasicViewModel>(
 
     override fun isSupportSwipe(): Boolean {
         return true
+    }
+
+    override fun onBackPressed() {
+        setResult(Activity.RESULT_OK)
+        super.onBackPressed()
     }
 }

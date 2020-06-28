@@ -79,9 +79,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    override fun isViewModelNeedStartForResult(): Boolean {
+        return true
+    }
 
+    override fun onActivityResult(resultCode: Int, intent: Intent) {
+        Log.i("MainActivity", "onActivityResult: $resultCode, $intent")
     }
 
     /**
