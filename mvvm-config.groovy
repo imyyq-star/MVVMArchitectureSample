@@ -12,42 +12,19 @@ include {
 
     // 通常来说以上都需要为 true
 
-    bindingCollection {
-        bindingAdapter=true
-        bindingAdapterRv=true
-        bindingAdapterVp2=true
-    }
     recyclerView=true
-    material=false
-    viewPager2=true
 
     room=true
     roomRxJava=false
     swipeRefreshLayout=false
-    slidingPaneLayout=true
     retrofit2=true
-    gson=true
     glide=true
     retrofit2RxJava2=true
     livePermissions=true
-    paging=false
     rxJava2=false
     rxKotlin=false
 
     loadSir=true
-
-    reactiveStreamsKTX=false
-
-    natigation=true
-    natigationUiKTX=true
-    natigationRuntimeKTX=true
-    natigationFragmentKTX=true
-
-    roomKTX=false
-    sqliteKTX=false
-    workKTX=false
-    paletteKTX=false
-    collectionKTX=false
 }
 
 SDKVersion {
