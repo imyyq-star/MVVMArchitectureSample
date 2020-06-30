@@ -32,6 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="基本的使用"
+            isInterval="@{true}"
+            intervalMilliseconds="@{1000}"
             />
 
         <Button
