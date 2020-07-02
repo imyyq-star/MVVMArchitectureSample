@@ -1,3 +1,4 @@
 rootProject.name = "MVVMArchitectureSample"
 include ':sample'
+include ':sample-java'
 include ':MVVMArchitecture'
