@@ -19,4 +19,8 @@ class NetworkActivity : BaseActivity<ActivityNetworkBinding, NetworkViewModel>(
             AppViewModelFactory
         ).get(NetworkViewModel::class.java)
     }
+
+    override fun isLoadingDialogCancelable(): Boolean {
+        return true
+    }
 }

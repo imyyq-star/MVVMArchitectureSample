@@ -2,6 +2,8 @@ package com.imyyq.sample.data.source.http.service
 
 import com.imyyq.sample.entity.BaseEntity
 import com.imyyq.sample.entity.FriendWebSiteEntity
+import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,4 +14,8 @@ interface WanAndroidApiService {
         @Query("userName") userName: String,
         @Query("pwd") pwd: String
     ): BaseEntity<List<FriendWebSiteEntity?>?>?
+
+    @GET("https://github.com/")
+    fun google(
+    ): Call<ResponseBody?>?
 }

@@ -4,9 +4,14 @@ import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.viewModelScope
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.data.Repository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NetworkViewModel(app: Application, model: Repository) : BaseViewModel<Repository>(app, model) {
     val resultCode = ObservableField<String>()
@@ -33,5 +38,29 @@ class NetworkViewModel(app: Application, model: Repository) : BaseViewModel<Repo
                 dismissDialog()
             }
         )
+
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                launchFlow {
+                    Log.i("NetworkViewModel", "commonLog - onResume launchFlow: ${Thread.currentThread().name}")
+                    return@launchFlow 100
+                }
+                .onStart {
+                    Log.i("NetworkViewModel", "commonLog - onResume onStart: ${Thread.currentThread().name}")
+                }
+                .flowOn(Dispatchers.IO)
+
+                .onCompletion {
+                    Log.i("NetworkViewModel", "commonLog - onResume: onCompletion ${Thread.currentThread().name}")
+                }.onEach {
+                    Log.i("NetworkViewModel", "commonLog - onResume: onEach $it ${Thread.currentThread().name}")
+                }
+                .flowOn(Dispatchers.Main)
+
+                .collect {
+                    Log.i("NetworkViewModel", "commonLog - onResume: collect $it ${Thread.currentThread().name}")
+                }
+            }
+        }
     }
 }
