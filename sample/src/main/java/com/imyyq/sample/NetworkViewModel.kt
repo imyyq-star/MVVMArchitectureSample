@@ -35,7 +35,7 @@ class NetworkViewModel(app: Application, model: Repository) : BaseViewModel<Repo
                 Log.i("NetworkViewModel", "commonLog - onFailed: $code, $msg")
             },
             onComplete = {
-                dismissDialog()
+                dismissLoadingDialog()
             }
         )
 

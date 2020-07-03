@@ -19,7 +19,7 @@ class RecyclerViewViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     }
 
     // 决定每个 item 占据屏幕的几列
-    val spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
+    val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
         override fun getSpanSize(position: Int): Int {
             if (observableList[position] is String) {
                 return 2
@@ -32,7 +32,7 @@ class RecyclerViewViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         for (i in 0..10) {
             observableList.add("item $i")
             if (i % 2 == 0) {
-                observableList.add(RvItemViewModel(this, RvItemViewModel::class.java, "rv item $i"))
+                observableList.add(RvItemViewModel(this, "rv item $i"))
             }
         }
     }
