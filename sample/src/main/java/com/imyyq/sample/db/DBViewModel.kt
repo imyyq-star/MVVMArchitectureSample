@@ -1,7 +1,7 @@
 package com.imyyq.sample.db
 
 import android.app.Application
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -18,7 +18,7 @@ class DBViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     // room 版本升级
     private val migration: Migration = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {
-            Log.i("DBViewModel", "commonLog - migrate: ")
+            LogUtil.i("DBViewModel", "commonLog - migrate: ")
             database.execSQL("alter table user add column `version2` TEXT")
         }
     }

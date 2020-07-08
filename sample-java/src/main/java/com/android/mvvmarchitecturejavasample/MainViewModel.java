@@ -1,7 +1,7 @@
 package com.android.mvvmarchitecturejavasample;
 
 import android.app.Application;
-import android.util.Log;
+import com.imyyq.mvvm.utils.LogUtil;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
@@ -37,7 +37,7 @@ public class MainViewModel extends BaseViewModel<BaseModel> {
                 // 只有添加了这一句，才可以在页面销毁时取消请求
                 .doOnSubscribe(this::addSubscribe)
                 .map(demoEntity -> {
-                    Log.i("MainViewModel", "commonLog - onResume: sleep");
+                    LogUtil.i("MainViewModel", "commonLog - onResume: sleep");
                     Thread.sleep(4000);
                     return demoEntity;
                 })
@@ -59,13 +59,13 @@ public class MainViewModel extends BaseViewModel<BaseModel> {
 
                     @Override
                     public void onResult(List<DemoEntity> result) {
-                        Log.i("MainViewModel", "commonLog - onResume: " + mBaseResult);
+                        LogUtil.i("MainViewModel", "commonLog - onResume: " + mBaseResult);
                         MainViewModel.this.result.set(String.valueOf(mBaseResult.code()));
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.i("MainViewModel", "onComplete: ");
+                        LogUtil.i("MainViewModel", "onComplete: ");
                     }
                 });
 
@@ -89,13 +89,13 @@ public class MainViewModel extends BaseViewModel<BaseModel> {
 
                     @Override
                     public void onResult(List<DemoEntity> result) {
-                        Log.i("MainViewModel", "commonLog - onResume: " + mBaseResult);
+                        LogUtil.i("MainViewModel", "commonLog - onResume: " + mBaseResult);
                         MainViewModel.this.result.set(String.valueOf(mBaseResult.code()));
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.i("MainViewModel", "onComplete: ");
+                        LogUtil.i("MainViewModel", "onComplete: ");
                     }
                 }));
     }

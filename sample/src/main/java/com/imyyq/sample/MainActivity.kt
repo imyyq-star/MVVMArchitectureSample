@@ -1,7 +1,7 @@
 package com.imyyq.sample
 
 import android.content.Intent
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelStoreOwner
@@ -64,7 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
     override fun initViewObservable() {
         // mViewModel 是界面关联的主 VM 的实例，有上述的泛型参数决定，这里是 MainViewModel。
         // mBinding 是 layout 文件的绑定类，包含了声明了 id 的所有 view 的引用。
-        Log.i("MainActivity", "initViewObservable: $mViewModel, $mBinding")
+        LogUtil.i("MainActivity", "initViewObservable: $mViewModel, $mBinding")
     }
 
     /**
@@ -74,7 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
         super.initData()
         //指定某控件点击间隔时间：1000毫秒
         mBinding.btn.clickWithTrigger(1000, View.OnClickListener {
-            Log.i("MainActivity", "initData: ")
+            LogUtil.i("MainActivity", "initData: ")
             CaptureAndCropManager.capturePhotoFromCamera(this, 100)
         })
     }
@@ -84,7 +84,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
     }
 
     override fun onActivityResult(resultCode: Int, intent: Intent) {
-        Log.i("MainActivity", "onActivityResult: $resultCode, $intent")
+        LogUtil.i("MainActivity", "onActivityResult: $resultCode, $intent")
     }
 
     /**

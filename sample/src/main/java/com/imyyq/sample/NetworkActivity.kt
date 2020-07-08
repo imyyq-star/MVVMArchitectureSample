@@ -23,4 +23,8 @@ class NetworkActivity : BaseActivity<ActivityNetworkBinding, NetworkViewModel>(
     override fun isLoadingDialogCancelable(): Boolean {
         return true
     }
+
+    override fun isCancelConsumingTaskWhenLoadingDialogCanceled(): Boolean {
+        return true
+    }
 }

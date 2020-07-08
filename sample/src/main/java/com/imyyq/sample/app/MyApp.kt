@@ -1,6 +1,6 @@
 package com.imyyq.sample.app
 
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.app.AppStateTracker
 import com.imyyq.mvvm.app.BaseApp
 import com.imyyq.mvvm.app.GlobalConfig
@@ -25,17 +25,19 @@ class MyApp : BaseApp() {
             ErrorCallback::class.java
         )
 
-        GlobalConfig.isViewModelNeedStartAndFinish = true
-        GlobalConfig.isNeedLoadingDialog = true
+        GlobalConfig.gIsViewModelNeedStartAndFinish = true
+        GlobalConfig.gIsNeedLoadingDialog = true
+
+        LogUtil.init()
 
         // 可追踪应用的是在前台还是后台
         AppStateTracker.track(object : AppStateTracker.AppStateChangeListener {
             override fun appTurnIntoForeground() {
-                Log.i("MyApp", "commonLog - appTurnIntoForeground: ")
+                LogUtil.i("MyApp", "commonLog - appTurnIntoForeground: ")
             }
 
             override fun appTurnIntoBackground() {
-                Log.i("MyApp", "commonLog - appTurnIntoBackground: ")
+                LogUtil.i("MyApp", "commonLog - appTurnIntoBackground: ")
             }
         })
     }

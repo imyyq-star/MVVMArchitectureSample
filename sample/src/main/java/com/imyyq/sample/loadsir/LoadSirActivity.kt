@@ -1,6 +1,6 @@
 package com.imyyq.sample.loadsir
 
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.sample.BR
 import com.imyyq.sample.R
@@ -14,6 +14,6 @@ class LoadSirActivity : BaseActivity<ActivityLoadsirBinding, LoadSirViewModel>(
     }
 
     override fun onLoadSirReload() {
-        Log.i("LoadSirActivity", "commonLog - onLoadSirReload: ")
+        LogUtil.i("LoadSirActivity", "commonLog - onLoadSirReload: ")
     }
 }

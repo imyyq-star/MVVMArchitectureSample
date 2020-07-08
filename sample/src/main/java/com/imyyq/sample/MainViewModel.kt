@@ -3,15 +3,14 @@ package com.imyyq.sample
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.app.MyApp
 import com.imyyq.sample.db.DBActivity
 import com.imyyq.sample.loadsir.LoadSirActivity
-import com.imyyq.sample.nav.NavActivity
 import com.imyyq.sample.rv.RecyclerViewActivity
 import com.imyyq.sample.vp.ViewPager2Activity
 import com.imyyq.sample.vp.ViewPagerActivity
@@ -66,7 +65,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     override fun onResume(owner: LifecycleOwner) {
         // 注意！！！！！ vm 层绝对不可以引用 v 层的实例，需要 context 要么通过 application，要么通过 AppActivityManager
         val app = getApplication<MyApp>()
-        Log.i("MainViewModel", "commonLog - onResume: $app")
+        LogUtil.i("MainViewModel", "commonLog - onResume: $app")
     }
 
     /**
@@ -76,7 +75,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     }
 
     override fun onActivityResult(resultCode: Int, intent: Intent) {
-        Log.i("MainViewModel", "onActivityResult: $resultCode, $intent")
+        LogUtil.i("MainViewModel", "onActivityResult: $resultCode, $intent")
     }
 
     /**

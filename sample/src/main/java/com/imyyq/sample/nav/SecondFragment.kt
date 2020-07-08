@@ -1,6 +1,6 @@
 package com.imyyq.sample.nav
 
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import androidx.navigation.fragment.navArgs
 import com.imyyq.mvvm.base.BaseFragment
 import com.imyyq.mvvm.base.BaseModel
@@ -15,6 +15,6 @@ class SecondFragment : BaseFragment<FragmentSecondBinding, BaseViewModel<BaseMod
 
     override fun initData() {
         super.initData()
-        Log.i("SecondFragment", "commonLog - initData: $mViewModel, ${args.userName}")
+        LogUtil.i("SecondFragment", "commonLog - initData: $mViewModel, ${args.userName}")
     }
 }

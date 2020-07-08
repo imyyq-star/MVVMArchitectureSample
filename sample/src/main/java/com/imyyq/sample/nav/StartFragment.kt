@@ -1,7 +1,7 @@
 package com.imyyq.sample.nav
 
 import android.os.Bundle
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import android.view.View
 import com.imyyq.mvvm.base.BaseFragment
 import com.imyyq.sample.BR
@@ -13,11 +13,11 @@ class StartFragment : BaseFragment<FragmentStartBinding, StartViewModel>(
 ) {
     override fun onResume() {
         super.onResume()
-        Log.i("StartFragment", "commonLog - onResume: $mBinding, $mViewModel")
+        LogUtil.i("StartFragment", "commonLog - onResume: $mBinding, $mViewModel")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("StartFragment", "commonLog - onViewCreated: $mBinding, $mViewModel")
+        LogUtil.i("StartFragment", "commonLog - onViewCreated: $mBinding, $mViewModel")
     }
 }

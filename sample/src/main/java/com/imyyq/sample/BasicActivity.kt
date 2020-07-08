@@ -1,7 +1,7 @@
 package com.imyyq.sample
 
 import android.app.Activity
-import android.util.Log
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.sample.databinding.ActivityBasicBinding
 
@@ -14,7 +14,7 @@ class BasicActivity : BaseActivity<ActivityBasicBinding, BasicViewModel>(
 ) {
     override fun initParam() {
         val bundle = getBundle(this)
-        Log.i("BasicActivity", "commonLog - initParam: $bundle")
+        LogUtil.i("BasicActivity", "commonLog - initParam: $bundle")
     }
 
     override fun isSupportSwipe(): Boolean {
