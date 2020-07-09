@@ -1,18 +1,16 @@
 package com.imyyq.sample.nav
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.imyyq.mvvm.base.DataBindingBaseActivity
+import com.imyyq.mvvm.base.ViewBindingBaseActivity
 import com.imyyq.mvvm.utils.LogUtil
-import com.imyyq.sample.BR
-import com.imyyq.sample.R
 import com.imyyq.sample.databinding.ActivityNavBinding
 
-class NavActivity : DataBindingBaseActivity<ActivityNavBinding, NavViewModel>(
-    R.layout.activity_nav, BR.viewModel
-) {
+class NavActivity : ViewBindingBaseActivity<ActivityNavBinding, NavViewModel>() {
     override fun initData() {
         super.initData()
         supportFragmentManager.registerFragmentLifecycleCallbacks(object :
@@ -69,4 +67,7 @@ class NavActivity : DataBindingBaseActivity<ActivityNavBinding, NavViewModel>(
 
         }, true)
     }
+
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?): ActivityNavBinding =
+        ActivityNavBinding.inflate(inflater)
 }

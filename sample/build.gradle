@@ -32,13 +32,9 @@ android {
         }
     }
 
-    // AS 4.0 以下
-    dataBinding {
-        enabled = true
-    }
-
-    viewBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
     }
 
     compileOptions {

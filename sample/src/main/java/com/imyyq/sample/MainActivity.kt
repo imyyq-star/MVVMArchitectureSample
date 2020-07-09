@@ -3,6 +3,7 @@ package com.imyyq.sample
 import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStoreOwner
 import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
@@ -65,6 +66,17 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
         // mViewModel 是界面关联的主 VM 的实例，有上述的泛型参数决定，这里是 MainViewModel。
         // mBinding 是 layout 文件的绑定类，包含了声明了 id 的所有 view 的引用。
         LogUtil.i("MainActivity", "initViewObservable: $mViewModel, $mBinding")
+        observe(mViewModel.liveData, this::onChanged)
+        observe(mViewModel.liveData) {
+
+        }
+        mViewModel.liveData.observe(this, Observer {
+
+        })
+    }
+
+    private fun onChanged(s: String) {
+
     }
 
     /**

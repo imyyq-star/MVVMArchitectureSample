@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.utils.LogUtil
@@ -22,6 +23,7 @@ import com.imyyq.sample.vp.ViewPagerActivity
  * 如果没有数据仓库，可以使用 BaseModel 作为 Model 层。
  */
 class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
+    val liveData = MutableLiveData<String>()
 
     val onNetwork = View.OnClickListener {
         startActivity(NetworkActivity::class.java)
@@ -67,6 +69,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         // 注意！！！！！ vm 层绝对不可以引用 v 层的实例，需要 context 要么通过 application，要么通过 AppActivityManager
         val app = getApplication<MyApp>()
         LogUtil.i("MainViewModel", "commonLog - onResume: $app")
+        liveData.value = "hello"
     }
 
     /**

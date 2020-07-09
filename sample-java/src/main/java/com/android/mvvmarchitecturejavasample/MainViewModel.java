@@ -1,11 +1,11 @@
 package com.android.mvvmarchitecturejavasample;
 
 import android.app.Application;
-import com.imyyq.mvvm.utils.LogUtil;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
 
 import com.android.mvvmarchitecturejavasample.data.WanAndroidApiService;
 import com.android.mvvmarchitecturejavasample.entity.DemoEntity;
@@ -13,6 +13,7 @@ import com.imyyq.mvvm.base.BaseModel;
 import com.imyyq.mvvm.base.BaseViewModel;
 import com.imyyq.mvvm.http.CommonObserver;
 import com.imyyq.mvvm.http.HttpRequest;
+import com.imyyq.mvvm.utils.LogUtil;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,6 +25,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainViewModel extends BaseViewModel<BaseModel> {
     public ObservableField<String> result = new ObservableField<>();
+
+    MutableLiveData<String> liveData = new MutableLiveData<>();
 
     public MainViewModel(@NotNull Application app) {
         super(app);
