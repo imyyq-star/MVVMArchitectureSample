@@ -1,13 +1,13 @@
 package com.imyyq.sample
 
 import android.content.Intent
-import com.imyyq.mvvm.utils.LogUtil
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelStoreOwner
-import com.imyyq.mvvm.base.BaseActivity
+import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
 import com.imyyq.mvvm.utils.CaptureAndCropManager
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
 
@@ -20,7 +20,7 @@ import com.imyyq.sample.databinding.ActivityMainBinding
  * 构造需传入两个参数，一个是界面的 xml 界面，另一个是 vm 在 xml 中的变量，详见 xml 的配置。
  * 如果 xml 没有配置 vm 变量，可不传。
  */
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
+class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>(
     R.layout.activity_main, BR.viewModel
 ) {
     // 除了主 vm，还可以有其他的 vm，来自 fragment-ktx 的 viewModels 扩展，可快速一行代码创建实例

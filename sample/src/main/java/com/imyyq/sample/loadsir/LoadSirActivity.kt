@@ -1,12 +1,12 @@
 package com.imyyq.sample.loadsir
 
+import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.mvvm.utils.LogUtil
-import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.sample.BR
 import com.imyyq.sample.R
 import com.imyyq.sample.databinding.ActivityLoadsirBinding
 
-class LoadSirActivity : BaseActivity<ActivityLoadsirBinding, LoadSirViewModel>(
+class LoadSirActivity : DataBindingBaseActivity<ActivityLoadsirBinding, LoadSirViewModel>(
     R.layout.activity_loadsir, BR.viewModel
 ) {
     override fun getLoadSirTarget(): Any? {

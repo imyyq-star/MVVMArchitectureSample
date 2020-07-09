@@ -1,9 +1,9 @@
 package com.imyyq.sample
 
-import com.imyyq.mvvm.base.BaseActivity
+import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.sample.databinding.ActivityListViewBinding
 
-class ListViewActivity : BaseActivity<ActivityListViewBinding, ListViewViewModel>(
+class ListViewActivity : DataBindingBaseActivity<ActivityListViewBinding, ListViewViewModel>(
     R.layout.activity_list_view, BR.viewModel
 ) {
 }

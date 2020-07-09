@@ -1,15 +1,15 @@
 package com.imyyq.sample
 
 import android.app.Activity
+import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.mvvm.utils.LogUtil
-import com.imyyq.mvvm.base.BaseActivity
 import com.imyyq.sample.databinding.ActivityBasicBinding
 
 /**
  * 演示下部分功能的 DataBinding 使用。
  *
  */
-class BasicActivity : BaseActivity<ActivityBasicBinding, BasicViewModel>(
+class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewModel>(
     R.layout.activity_basic, BR.viewModel
 ) {
     override fun initParam() {

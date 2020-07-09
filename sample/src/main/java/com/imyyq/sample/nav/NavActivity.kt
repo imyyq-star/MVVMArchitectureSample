@@ -1,16 +1,16 @@
 package com.imyyq.sample.nav
 
 import android.os.Bundle
-import com.imyyq.mvvm.utils.LogUtil
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.imyyq.mvvm.base.BaseActivity
+import com.imyyq.mvvm.base.DataBindingBaseActivity
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.BR
 import com.imyyq.sample.R
 import com.imyyq.sample.databinding.ActivityNavBinding
 
-class NavActivity : BaseActivity<ActivityNavBinding, NavViewModel>(
+class NavActivity : DataBindingBaseActivity<ActivityNavBinding, NavViewModel>(
     R.layout.activity_nav, BR.viewModel
 ) {
     override fun initData() {

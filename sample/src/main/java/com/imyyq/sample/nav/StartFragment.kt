@@ -1,14 +1,14 @@
 package com.imyyq.sample.nav
 
 import android.os.Bundle
-import com.imyyq.mvvm.utils.LogUtil
 import android.view.View
-import com.imyyq.mvvm.base.BaseFragment
+import com.imyyq.mvvm.base.DataBindingFragment
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.BR
 import com.imyyq.sample.R
 import com.imyyq.sample.databinding.FragmentStartBinding
 
-class StartFragment : BaseFragment<FragmentStartBinding, StartViewModel>(
+class StartFragment : DataBindingFragment<FragmentStartBinding, StartViewModel>(
     R.layout.fragment_start, BR.viewModel
 ) {
     override fun onResume() {

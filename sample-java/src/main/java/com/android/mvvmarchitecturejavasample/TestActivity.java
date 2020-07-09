@@ -1,20 +1,18 @@
 package com.android.mvvmarchitecturejavasample;
 
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import com.android.mvvmarchitecturejavasample.databinding.ActivityTestBinding;
-import com.imyyq.mvvm.BR;
-import com.imyyq.mvvm.base.BaseActivity;
+import com.imyyq.mvvm.base.ViewBindingBaseActivity;
 
-public class TestActivity extends BaseActivity<ActivityTestBinding, TestViewModel> {
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-    public TestActivity() {
-        super(R.layout.activity_test, BR.viewModel);
-    }
-
+public class TestActivity extends ViewBindingBaseActivity<ActivityTestBinding, TestViewModel> {
+    @NotNull
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public ActivityTestBinding initBinding(@NotNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        return ActivityTestBinding.inflate(getLayoutInflater());
     }
 }

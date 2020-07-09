@@ -2,11 +2,11 @@ package com.imyyq.sample
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import com.imyyq.mvvm.base.BaseActivity
+import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.sample.app.AppViewModelFactory
 import com.imyyq.sample.databinding.ActivityNetworkBinding
 
-class NetworkActivity : BaseActivity<ActivityNetworkBinding, NetworkViewModel>(
+class NetworkActivity : DataBindingBaseActivity<ActivityNetworkBinding, NetworkViewModel>(
     R.layout.activity_network, BR.viewModel
 ) {
     /**

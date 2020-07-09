@@ -11,6 +11,7 @@ import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.app.MyApp
 import com.imyyq.sample.db.DBActivity
 import com.imyyq.sample.loadsir.LoadSirActivity
+import com.imyyq.sample.nav.NavActivity
 import com.imyyq.sample.rv.RecyclerViewActivity
 import com.imyyq.sample.vp.ViewPager2Activity
 import com.imyyq.sample.vp.ViewPagerActivity
