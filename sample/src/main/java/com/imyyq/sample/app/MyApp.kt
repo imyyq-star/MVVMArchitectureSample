@@ -1,10 +1,10 @@
 package com.imyyq.sample.app
 
-import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.app.AppStateTracker
 import com.imyyq.mvvm.app.BaseApp
 import com.imyyq.mvvm.app.GlobalConfig
 import com.imyyq.mvvm.http.HttpRequest
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.loadsir.callback.EmptyCallback
 import com.imyyq.sample.loadsir.callback.ErrorCallback
 import com.imyyq.sample.loadsir.callback.LoadingCallback
@@ -27,6 +27,7 @@ class MyApp : BaseApp() {
 
         GlobalConfig.gIsViewModelNeedStartAndFinish = true
         GlobalConfig.gIsNeedLoadingDialog = true
+        GlobalConfig.gIsNeedChangeBaseUrl = true
 
         LogUtil.init()
 

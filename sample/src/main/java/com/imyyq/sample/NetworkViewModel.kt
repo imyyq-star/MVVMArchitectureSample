@@ -1,11 +1,11 @@
 package com.imyyq.sample
 
 import android.app.Application
-import com.imyyq.mvvm.utils.LogUtil
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import com.imyyq.mvvm.base.BaseViewModel
+import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.data.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
