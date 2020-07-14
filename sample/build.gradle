@@ -17,10 +17,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        //指定room.schemaLocation生成的文件路径
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/build/schemas".toString()]
+                // 指定room.schemaLocation生成的文件路径
+                arguments += ["room.schemaLocation": "$projectDir/build/schemas".toString()]
+                // 增量编译
+                arguments += ["room.incremental": "true"]
             }
         }
     }

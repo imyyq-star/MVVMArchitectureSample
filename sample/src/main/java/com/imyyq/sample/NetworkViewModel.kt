@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NetworkViewModel(app: Application, model: Repository) : BaseViewModel<Repository>(app, model) {
+class NetworkViewModel(app: Application) : BaseViewModel<Repository>(app) {
     val resultCode = ObservableField<String>()
 
     override fun onResume(owner: LifecycleOwner) {

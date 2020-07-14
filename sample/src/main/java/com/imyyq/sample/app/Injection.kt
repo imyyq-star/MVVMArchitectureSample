@@ -17,13 +17,13 @@ object Injection {
             getService(WanAndroidApiService::class.java)
         //网络数据源
         val httpDataSource = HttpDataSourceImpl
-        httpDataSource.wanAndroidApiService = apiService
+//        httpDataSource.wanAndroidApiService = apiService
         //本地数据源
         val localDataSource: LocalDataSource = LocalDataSourceImpl
 
         //两条分支组成一个数据仓库
-        Repository.httpDataSource = httpDataSource
-        Repository.localDataSource = localDataSource
-        return Repository
+//        Repository.httpDataSource = httpDataSource
+//        Repository.localDataSource = localDataSource
+        return Repository()
     }
 }

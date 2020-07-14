@@ -3,16 +3,18 @@ package com.imyyq.sample.data
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.sample.data.source.HttpDataSource
 import com.imyyq.sample.data.source.LocalDataSource
+import com.imyyq.sample.data.source.http.HttpDataSourceImpl
+import com.imyyq.sample.data.source.local.LocalDataSourceImpl
 import com.imyyq.sample.entity.BaseEntity
 import com.imyyq.sample.entity.FriendWebSiteEntity
 
 /**
  * 仓库应该是单例的，持有各种数据源
  */
-object Repository :
+class Repository :
     BaseModel(), HttpDataSource, LocalDataSource {
-    lateinit var httpDataSource: HttpDataSource
-    lateinit var localDataSource: LocalDataSource
+    private var httpDataSource: HttpDataSource = HttpDataSourceImpl
+    private var localDataSource: LocalDataSource = LocalDataSourceImpl
 
     override suspend fun login(userName: String, pwd: String): BaseEntity<List<FriendWebSiteEntity?>?>? {
         return httpDataSource.login(userName, pwd)
