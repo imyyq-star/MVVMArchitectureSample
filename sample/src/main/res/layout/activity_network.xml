@@ -27,6 +27,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            onClickCommand="@{viewModel.openLog}"
+            android:text="连按 5 次打开日志输出"
             />
 
     </LinearLayout>

@@ -13,7 +13,7 @@ class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewMod
     R.layout.activity_basic, BR.viewModel
 ) {
     override fun initParam() {
-        val bundle = getBundle(this)
+        val bundle = getBundle()
         LogUtil.i("BasicActivity", "commonLog - initParam: $bundle")
     }
 

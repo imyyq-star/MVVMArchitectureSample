@@ -51,7 +51,7 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
     /**
      * 打开这个界面时传入的参数可以在这里处理。
      *
-     * 此时 mViewModel 和 mBinding 还没有实例化。
+     * 此时 mViewModel 和 mBinding 已实例化。
      */
     override fun initParam() {
         mTestViewModel.test()

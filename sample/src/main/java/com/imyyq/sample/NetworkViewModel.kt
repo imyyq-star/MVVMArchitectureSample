@@ -1,6 +1,7 @@
 package com.imyyq.sample
 
 import android.app.Application
+import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
@@ -15,6 +16,10 @@ import kotlinx.coroutines.withContext
 
 class NetworkViewModel(app: Application) : BaseViewModel<Repository>(app) {
     val resultCode = ObservableField<String>()
+
+    val openLog = View.OnClickListener {
+        LogUtil.multiClickToOpenLog(it, 5)
+    }
 
     override fun onResume(owner: LifecycleOwner) {
         // 使用 vm 的协程，可以在界面销毁时自动取消该协程
