@@ -2,7 +2,6 @@ package com.imyyq.sample
 
 import android.app.Application
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -35,7 +34,11 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onBasic = View.OnClickListener {
         // 可以携带参数
-        startActivityForResult(BasicActivity::class.java, Bundle.EMPTY)
+//        val bundle = Bundle()
+//        bundle.putString("test", "hei")
+//        startActivityForResult(BasicActivity::class.java, bundle)
+        startActivity(BasicActivity::class.java, mutableMapOf("test2" to 1, "test" to "hahahah"
+        , "test3" to arrayOf("ssss", "bbbb")))
     }
 
     val onListView = View.OnClickListener {

@@ -1,11 +1,14 @@
 package com.imyyq.sample
 
 import android.app.Application
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LifecycleOwner
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.utils.SingleLiveEvent
+import java.util.*
 
 class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     // 使用 ObservableXXX
@@ -25,5 +28,15 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
          当然也可以自定义，这块的功能完全是属于 DataBinding 的
          */
         mImageUrl.value = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1752460159,226752426&fm=26&gp=0.jpg"
+
+        // 不能在构造中获取
+        Log.i("BasicViewModel", "commonLog - init: ${getStringFromBundle("test")}")
+    }
+
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        Log.i("BasicViewModel", "commonLog - onCreate: ${getStringFromBundle("test")}")
+        Log.i("BasicViewModel", "commonLog - onCreate: ${getStringFromIntent("test")}, ${getIntFromIntent("test2")}")
+        Log.i("BasicViewModel", "commonLog - onCreate: ${Arrays.toString(getStringArrayFromIntent("test3"))}")
     }
 }
