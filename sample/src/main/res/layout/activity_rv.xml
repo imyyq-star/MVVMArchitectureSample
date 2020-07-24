@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             app:itemBinding="@{viewModel.multipleItems}"
             app:items="@{viewModel.observableList}"
-            app:layoutManager="@{LayoutManagers.grid(6, viewModel.spanSizeLookup)}"
+            app:layoutManager="@{LayoutManagers.verticalGrid(6, viewModel.spanSizeLookup)}"
             app:lineManager="@{LineManagers.vertical()}"
             />
 

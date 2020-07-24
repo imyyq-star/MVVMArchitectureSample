@@ -23,6 +23,8 @@
             app:itemBinding="@{viewModel.multipleItems}"
             app:itemTypeCount="@{viewModel.multipleItems.itemTypeCount()}"
             app:items="@{viewModel.itemAny}"
+            onScrollStateChangedCommand="@{viewModel.onScrollStateChangedCommand}"
+            onScrollChangeCommand="@{viewModel.onScrollChangeCommand}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,13 @@
 package com.imyyq.sample
 
 import android.app.Application
+import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
+import com.imyyq.mvvm.binding.command.BindingConsumer
+import com.imyyq.mvvm.binding.viewadapter.listview.ListViewScrollDataWrapper
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import me.tatarka.bindingcollectionadapter2.OnItemBind
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
@@ -54,5 +57,13 @@ class ListViewViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
         // 可以延迟设置 adapter
         itemBinding = ItemBinding.of(BR.item, R.layout.item)
+    }
+
+    val onScrollStateChangedCommand = BindingConsumer<Int> {
+        Log.i("ListViewViewModel", "commonLog - : $it")
+    }
+
+    val onScrollChangeCommand = BindingConsumer<ListViewScrollDataWrapper> {
+        Log.i("ListViewViewModel", "commonLog - : $it")
     }
 }
