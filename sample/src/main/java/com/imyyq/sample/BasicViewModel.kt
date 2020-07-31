@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.binding.command.BindingConsumer
+import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.SingleLiveEvent
 import java.util.*
 
@@ -24,6 +25,7 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onCheckedChangeListener = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
         Log.i("BasicViewModel", "commonLog - : $isChecked")
+        LiveDataBus.send("", listOf("我是1", "我是2"))
     }
 
     val textChanged = BindingConsumer<String> {
@@ -41,6 +43,10 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
         // 不能在构造中获取
         Log.i("BasicViewModel", "commonLog - init: ${getStringFromBundle("test")}")
+
+        LiveDataBus.observeForever<List<String>>(this, "", androidx.lifecycle.Observer {
+            Log.i("BasicViewModel", "commonLog - forevet: $it, ")
+        })
     }
 
     override fun onCreate(owner: LifecycleOwner) {

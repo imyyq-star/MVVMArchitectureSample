@@ -1,12 +1,14 @@
 package com.imyyq.sample
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStoreOwner
 import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
+import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.CaptureAndCropManager
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.utils.SystemUIUtil
@@ -55,6 +57,12 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
      */
     override fun initParam() {
         mTestViewModel.test()
+        LiveDataBus.observeForever(this,"", Observer {
+            Log.i("MainActivity", "commonLog - initParam: observeForever $it")
+        })
+        LiveDataBus.observe<List<String>>(this, "", Observer {
+            Log.i("MainActivity", "commonLog - initParam: observe $it")
+        })
     }
 
     /**

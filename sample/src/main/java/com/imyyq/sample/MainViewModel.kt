@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
+import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.app.MyApp
 import com.imyyq.sample.db.DBActivity
@@ -63,6 +64,10 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onNav = View.OnClickListener {
         startActivity(NavActivity::class.java)
+    }
+
+    val onTest = View.OnClickListener {
+        LiveDataBus.send("", listOf("我是1", "我是2"))
     }
 
     /**

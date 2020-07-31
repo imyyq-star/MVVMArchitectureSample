@@ -20,5 +20,5 @@ class SecondFragment : ViewBindingBaseFragment<FragmentSecondBinding, BaseViewMo
     override fun initBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentSecondBinding? = FragmentSecondBinding.inflate(inflater, container, false)
+    ): FragmentSecondBinding = FragmentSecondBinding.inflate(inflater, container, false)
 }

@@ -1,7 +1,10 @@
 package com.imyyq.sample
 
 import android.app.Activity
+import android.util.Log
+import androidx.lifecycle.Observer
 import com.imyyq.mvvm.base.DataBindingBaseActivity
+import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.databinding.ActivityBasicBinding
 
@@ -15,6 +18,14 @@ class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewMod
     override fun initParam() {
         val bundle = getBundle()
         LogUtil.i("BasicActivity", "commonLog - initParam: $bundle")
+
+        LiveDataBus.observe<List<Int>>(this, "", Observer {
+            Log.i("BasicActivity", "commonLog - initParam: $it")
+        })
+
+        LiveDataBus.observe<List<Int>>(this, "", Observer {
+            Log.i("BasicActivity", "commonLog - initParam: $it")
+        })
     }
 
     override fun isSupportSwipe(): Boolean {
