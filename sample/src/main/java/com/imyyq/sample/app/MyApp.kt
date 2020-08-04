@@ -28,8 +28,8 @@ class MyApp : BaseApp() {
         GlobalConfig.gIsViewModelNeedStartAndFinish = true
         GlobalConfig.gIsNeedLoadingDialog = true
         GlobalConfig.gIsNeedChangeBaseUrl = true
-
-        LogUtil.init()
+        // beta 默认是保存 log 到本地的，如果不需要可以设置为 false
+        GlobalConfig.gIsBetaSaveLog = false
 
         // 可追踪应用的是在前台还是后台
         AppStateTracker.track(object : AppStateTracker.AppStateChangeListener {
