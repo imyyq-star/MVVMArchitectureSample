@@ -57,11 +57,13 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
      */
     override fun initParam() {
         mTestViewModel.test()
-        LiveDataBus.observeForever(this,"", Observer {
-            Log.i("MainActivity", "commonLog - initParam: observeForever $it")
-        })
-        LiveDataBus.observe<List<String>>(this, "", Observer {
-            Log.i("MainActivity", "commonLog - initParam: observe $it")
+        // 监听生命周期无关的事件
+        LiveDataBus.observe(this,"forever", Observer {
+            Log.i("MainActivity", "LiveDataBus - initParam: observeForever $it")
+        }, true)
+        // 监听生命周期有关的事件
+        LiveDataBus.observe<List<String>>(this, "normal", Observer {
+            Log.i("MainActivity", "LiveDataBus - initParam: observe $it")
         })
     }
 

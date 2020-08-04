@@ -67,7 +67,9 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     }
 
     val onTest = View.OnClickListener {
-        LiveDataBus.send("", listOf("我是1", "我是2"))
+        LiveDataBus.send("normal", listOf("我是1", "我是2"))
+        LiveDataBus.send("forever", listOf("我是3", "我是4"))
+        LiveDataBus.sendSticky("sticky", listOf("我是1", "我是2"))
     }
 
     /**

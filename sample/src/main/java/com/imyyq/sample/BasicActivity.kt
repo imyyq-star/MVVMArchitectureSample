@@ -19,12 +19,12 @@ class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewMod
         val bundle = getBundle()
         LogUtil.i("BasicActivity", "commonLog - initParam: $bundle")
 
-        LiveDataBus.observe<List<Int>>(this, "", Observer {
-            Log.i("BasicActivity", "commonLog - initParam: $it")
+        LiveDataBus.observe<List<Int>>(this, "normal", Observer {
+            Log.i("BasicActivity", "LiveDataBus - initParam: $it")
         })
 
-        LiveDataBus.observe<List<Int>>(this, "", Observer {
-            Log.i("BasicActivity", "commonLog - initParam: $it")
+        LiveDataBus.observeSticky<List<Int>>(this, "sticky", Observer {
+            Log.i("BasicActivity", "LiveDataBus - initParam: sticky $it")
         })
     }
 

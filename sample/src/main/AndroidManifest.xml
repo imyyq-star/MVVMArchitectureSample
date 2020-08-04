@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NetworkActivity" />
-        <activity android:name=".BasicActivity" />
+        <activity android:name=".BasicActivity" android:theme="@style/AppTheme.Translucent"/>
         <activity android:name=".ListViewActivity" />
         <activity android:name=".loadsir.LoadSirActivity" />
         <activity android:name=".rv.RecyclerViewActivity" />

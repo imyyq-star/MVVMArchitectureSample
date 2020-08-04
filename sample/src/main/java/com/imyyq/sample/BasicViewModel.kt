@@ -25,7 +25,8 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onCheckedChangeListener = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
         Log.i("BasicViewModel", "commonLog - : $isChecked")
-        LiveDataBus.send("", listOf("我是1", "我是2"))
+        LiveDataBus.send("normal", listOf("我是1", "我是2"))
+        LiveDataBus.send("forever", listOf("我是3", "我是4"))
     }
 
     val textChanged = BindingConsumer<String> {
@@ -44,8 +45,12 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         // 不能在构造中获取
         Log.i("BasicViewModel", "commonLog - init: ${getStringFromBundle("test")}")
 
-        LiveDataBus.observeForever<List<String>>(this, "", androidx.lifecycle.Observer {
-            Log.i("BasicViewModel", "commonLog - forevet: $it, ")
+        LiveDataBus.observe<List<String>>(this, "forever", androidx.lifecycle.Observer {
+            Log.i("BasicViewModel", "LiveDataBus - forever: $it, ")
+        }, true)
+
+        LiveDataBus.observeSticky<List<String>>(this, "sticky", androidx.lifecycle.Observer {
+            Log.i("BasicViewModel", "LiveDataBus - forever: sticky $it, ")
         })
     }
 
