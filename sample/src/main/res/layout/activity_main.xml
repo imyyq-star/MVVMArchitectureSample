@@ -18,6 +18,12 @@
             name="viewModel"
             type="com.imyyq.sample.MainViewModel"
             />
+
+        <!-- 还可以有其他的 vm，根据业务拆分 -->
+        <variable
+            name="testViewModel"
+            type="com.imyyq.sample.TestViewModel"
+            />
     </data>
 
     <LinearLayout

@@ -73,6 +73,15 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     }
 
     /**
+     * 默认返回 true，则框架可以帮你缓存自动创建的 Model 实例
+     */
+    override fun isCacheRepo(): Boolean {
+        return super.isCacheRepo()
+    }
+
+    // =========================================================================================================
+
+    /**
      * vm 可以感知 v 的生命周期
      */
     override fun onResume(owner: LifecycleOwner) {
@@ -82,21 +91,34 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         liveData.value = "hello"
     }
 
+    // 。。。。 还有其他的生命周期可复写
+
     /**
      * 这个是对应的界面调用 onDestroy 时的回调
      */
     override fun onDestroy(owner: LifecycleOwner) {
     }
 
+    /**
+     * 这个是当前 vm 销毁时的回调。
+     */
+    override fun onCleared() {
+        super.onCleared()
+    }
+
+    // =========================================================================================================
+    // 当你使用 Activity 或者使用 BaseViewModel 中的 startActivityForResult 方法，时，以下三个方法可用。
+    // 在 BaseViewModel 中也有相应的方法
+
     override fun onActivityResult(resultCode: Int, intent: Intent) {
         LogUtil.i("MainViewModel", "onActivityResult: $resultCode, $intent")
     }
 
-    /**
-     * 这个是当前 vm 销毁时的回调。
-     * 和 onDestroy 的区别是，如果界面是 Fragment，可能在 ViewPager 中时会多次的 destroy，但只有在完全销毁时才会 clear
-     */
-    override fun onCleared() {
-        super.onCleared()
+    override fun onActivityResultOk(intent: Intent) {
+        super.onActivityResultOk(intent)
+    }
+
+    override fun onActivityResultCanceled(intent: Intent) {
+        super.onActivityResultCanceled(intent)
     }
 }

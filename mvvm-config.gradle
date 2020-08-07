@@ -16,12 +16,11 @@ ext {
             recyclerView      : true,
 
             room              : true,
-            roomRxJava2       : false,
+            roomRxJava2       : true,
 
             retrofit2         : true,
             retrofit2RxJava2  : true,
 
-            swipeRefreshLayout: false,
             glide             : true,
 
             // 权限申请

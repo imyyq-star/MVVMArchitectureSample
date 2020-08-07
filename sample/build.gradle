@@ -19,7 +19,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                // 指定room.schemaLocation生成的文件路径
+                // 如果用到 room，可指定 room.schemaLocation 属性，指定生成的包含 sql 的 json 文件路径
                 arguments += ["room.schemaLocation": "$projectDir/build/schemas".toString()]
                 // 增量编译
                 arguments += ["room.incremental": "true"]
@@ -38,11 +38,13 @@ android {
         }
     }
 
+    // 开启 DataBinding 和 ViewBinding
     buildFeatures{
         dataBinding = true
         viewBinding = true
     }
 
+    // 支持 Java 8
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -55,11 +57,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':MVVMArchitecture')
-    kapt Deps.roomCompiler
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // 引用框架
+    implementation project(path: ':MVVMArchitecture')
+    // 如果你用到 room，需要声明注解处理器，否则无法使用的。
+    kapt Deps.roomCompiler
+
+    // 以下是框架没有封装过的库，只是将具体的地址放到了 MVVMArchitecture/dependencies.gradle 文件中，需要的话，自行引入
     implementation Deps.natigationFragmentKTX
 
     implementation Deps.bindingAdapter

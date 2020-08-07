@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NetworkActivity" />
+        <!-- 要想实现侧滑返回，activity的背景必须透明 -->
         <activity android:name=".BasicActivity" android:theme="@style/AppTheme.Translucent"/>
         <activity android:name=".ListViewActivity" />
         <activity android:name=".loadsir.LoadSirActivity" />

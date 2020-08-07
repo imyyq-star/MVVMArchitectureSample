@@ -13,51 +13,31 @@ import com.imyyq.mvvm.utils.CaptureAndCropManager
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.mvvm.utils.SystemUIUtil
 import com.imyyq.sample.databinding.ActivityMainBinding
+import com.kingja.loadsir.callback.Callback
 
-/**
- * View 层需要继承相应的基类：BaseFragment/BaseActivity
- *
- * ActivityMainBinding 是 R.layout.activity_main 生成的 binding 类，DataBinding 相关的知识。
- * MainViewModel 是界面的主 vm，如果你的界面没有 vm，可以用 BaseViewModel。
- *
- * 构造需传入两个参数，一个是界面的 xml 界面，另一个是 vm 在 xml 中的变量，详见 xml 的配置。
- * 如果 xml 没有配置 vm 变量，可不传。
- */
 class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>(
     R.layout.activity_main, BR.viewModel
 ) {
     // 除了主 vm，还可以有其他的 vm，来自 fragment-ktx 的 viewModels 扩展，可快速一行代码创建实例
     private val mTestViewModel by viewModels<TestViewModel>()
 
-    // 是否保持界面常亮。
-    override fun isKeepScreenOn(): Boolean {
-        return super.isKeepScreenOn()
-    }
-
-    // 是否需要对话框
-    override fun isNeedLoadingDialog(): Boolean {
-        return super.isNeedLoadingDialog()
-    }
-
-    // vm 是否需要启动和结束界面
-    override fun isViewModelNeedStartAndFinish(): Boolean {
-        return super.isViewModelNeedStartAndFinish()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        // 操控 systemUI
-        SystemUIUtil.fullscreenImmersive(window)
-    }
-
     /**
+     * 初始化的第一个方法。
+     *
      * 打开这个界面时传入的参数可以在这里处理。
      *
      * 此时 mViewModel 和 mBinding 已实例化。
      */
     override fun initParam() {
+        getStringFromBundle("key")
+        getStringFromIntent("key")
+        // 还有很多的 getXxxxFromXxxx 方法可以用，在 ViewModel 中也可以有
+
+        // 给 xml 中的变量赋值
+        mBinding.testViewModel = mTestViewModel
         mTestViewModel.test()
-        // 监听生命周期无关的事件
+
+        // 事件总线，监听生命周期无关的事件
         LiveDataBus.observe(this,"forever", Observer {
             Log.i("MainActivity", "LiveDataBus - initParam: observeForever $it")
         }, true)
@@ -68,45 +48,61 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
     }
 
     /**
-     * 这个方法是用来绑定 vm 中的响应式变量到界面中的，比如 LiveData。
+     * 初始化的第二个方法
+     *
+     * 这个方法是用来绑定 vm 中的响应式变量到界面中的，通常是 LiveData，事件监听等。
      *
      * 此时 mViewModel 和 mBinding 已实例化。
      */
     override fun initViewObservable() {
-        // mViewModel 是界面关联的主 VM 的实例，有上述的泛型参数决定，这里是 MainViewModel。
-        // mBinding 是 layout 文件的绑定类，包含了声明了 id 的所有 view 的引用。
+        // mBinding 是 layout 文件的绑定类，包含了声明了 id 的所有 view 的引用。这里就是对应 R.layout.activity_main
+        // mViewModel 是界面关联的主 VM 的实例，由继承 DataBindingBaseActivity 时的泛型参数决定，这里是 MainViewModel。
         LogUtil.i("MainActivity", "initViewObservable: $mViewModel, $mBinding")
+
+        // 父类中提供了简便的 observe 方法
         observe(mViewModel.liveData, this::onChanged)
         observe(mViewModel.liveData) {
 
         }
+        // 当然也可以这样用
         mViewModel.liveData.observe(this, Observer {
 
         })
     }
 
-    private fun onChanged(s: String) {
-
-    }
-
     /**
-     * 这个方法被调用时，此时界面已经初始化完毕了，可以进行获取数据的操作了，比如请求网络。
+     * 初始化的最后一个方法
+     *
+     * 这个方法被调用时，此时界面已经初始化完毕了，可以进行获取数据的操作了，比如请求网络等。
      */
     override fun initData() {
+        // 需要调用 super，否则 IDE 会报错
         super.initData()
-        //指定某控件点击间隔时间：1000毫秒
+        // 可在 xml 中设定点击间隔时间，也可通过代码指定某控件点击间隔时间，毫秒为单位
         mBinding.btn.clickWithTrigger(1000, View.OnClickListener {
             LogUtil.i("MainActivity", "initData: ")
             CaptureAndCropManager.capturePhotoFromCamera(this, 100)
         })
     }
 
-    override fun isViewModelNeedStartForResult(): Boolean {
-        return true
+    // 是否保持界面常亮。
+    override fun isKeepScreenOn(): Boolean {
+        return super.isKeepScreenOn()
     }
 
-    override fun onActivityResult(resultCode: Int, intent: Intent) {
-        LogUtil.i("MainActivity", "onActivityResult: $resultCode, $intent")
+    // 是否开启界面侧滑退出，需对应的主题背景透明
+    override fun isSupportSwipe(): Boolean {
+        return super.isSupportSwipe()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 操控 systemUI
+        SystemUIUtil.fullscreenImmersive(window)
+    }
+
+    private fun onChanged(s: String) {
+
     }
 
     /**
@@ -115,5 +111,83 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
      */
     override fun initViewModel(viewModelStoreOwner: ViewModelStoreOwner): MainViewModel {
         return super.initViewModel(viewModelStoreOwner)
+    }
+
+    // =========================================================================================================
+
+    // vm 是否需要启动和结束界面
+    override fun isViewModelNeedStartAndFinish(): Boolean {
+        return super.isViewModelNeedStartAndFinish()
+    }
+
+    override fun isViewModelNeedStartForResult(): Boolean {
+        return true
+    }
+
+    // =========================================================================================================
+    // 以下是加载中对话框的相关方法
+
+    override fun isNeedLoadingDialog(): Boolean {
+        return super.isNeedLoadingDialog()
+    }
+
+    override fun onCancelLoadingDialog() {
+        super.onCancelLoadingDialog()
+    }
+
+    override fun loadingDialogLayout(): Int {
+        return super.loadingDialogLayout()
+    }
+
+    override fun loadingDialogLayoutMsgId(): Int {
+        return super.loadingDialogLayoutMsgId()
+    }
+
+    override fun isLoadingDialogCancelable(): Boolean {
+        return super.isLoadingDialogCancelable()
+    }
+
+    override fun isLoadingDialogCanceledOnTouchOutside(): Boolean {
+        return super.isLoadingDialogCanceledOnTouchOutside()
+    }
+
+    override fun isCancelConsumingTaskWhenLoadingDialogCanceled(): Boolean {
+        return super.isCancelConsumingTaskWhenLoadingDialogCanceled()
+    }
+
+    // =========================================================================================================
+    // 以下是开启了 LoadSir 第三方框架时，在 BaseViewModel 中调用 showLoadSir 方法时的相关回调
+
+    override fun onLoadSirShowed(it: Class<out Callback>) {
+        super.onLoadSirShowed(it)
+    }
+
+    override fun onLoadSirSuccess() {
+        super.onLoadSirSuccess()
+    }
+
+    override fun onLoadSirReload() {
+        super.onLoadSirReload()
+    }
+
+    // 开启 LoadSir 需要复写以下方法，告知父类你的目标视图
+    override fun getLoadSirTarget(): Any? {
+        return super.getLoadSirTarget()
+    }
+
+    // =========================================================================================================
+    // 当你使用 Activity 或者使用 BaseViewModel 中的 startActivityForResult 方法，时，以下三个方法可用。
+    // 在 BaseViewModel 中也有相应的方法
+
+    override fun onActivityResultOk(intent: Intent) {
+        super.onActivityResultOk(intent)
+    }
+
+    override fun onActivityResultCanceled(intent: Intent) {
+        super.onActivityResultCanceled(intent)
+    }
+
+    override fun onActivityResult(resultCode: Int, intent: Intent) {
+        LogUtil.i("MainActivity", "onActivityResult: $resultCode, $intent")
     }
 }

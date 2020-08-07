@@ -1,10 +1,12 @@
 buildscript {
+    // 注意：这两个文件的声明顺序不能乱
     apply from: 'mvvm-config.gradle'
     apply from: 'MVVMArchitecture/dependencies.gradle'
 
     addRepository(repositories)
 
     dependencies {
+        // 根据自身 AS 的版本而不同，不同的版本，根目录的 gradle 目录也不一样
         classpath 'com.android.tools.build:gradle:4.0.0'
         classpath Deps.kotlinPlugin
         classpath Deps.natigationSafeArgsPlugin
