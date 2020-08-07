@@ -13,7 +13,6 @@ class SecondFragment : ViewBindingBaseFragment<FragmentSecondBinding, BaseViewMo
     val args: SecondFragmentArgs by navArgs()
 
     override fun initData() {
-        super.initData()
         LogUtil.i("SecondFragment", "commonLog - initData: $mViewModel, ${args.userName}")
     }
 

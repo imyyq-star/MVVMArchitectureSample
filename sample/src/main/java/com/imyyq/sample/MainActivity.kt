@@ -76,18 +76,11 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
      * 这个方法被调用时，此时界面已经初始化完毕了，可以进行获取数据的操作了，比如请求网络等。
      */
     override fun initData() {
-        // 需要调用 super，否则 IDE 会报错
-        super.initData()
         // 可在 xml 中设定点击间隔时间，也可通过代码指定某控件点击间隔时间，毫秒为单位
         mBinding.btn.clickWithTrigger(1000, View.OnClickListener {
             LogUtil.i("MainActivity", "initData: ")
             CaptureAndCropManager.capturePhotoFromCamera(this, 100)
         })
-    }
-
-    // 是否保持界面常亮。
-    override fun isKeepScreenOn(): Boolean {
-        return super.isKeepScreenOn()
     }
 
     // 是否开启界面侧滑退出，需对应的主题背景透明

@@ -12,7 +12,6 @@ import com.imyyq.sample.databinding.ActivityNavBinding
 
 class NavActivity : ViewBindingBaseActivity<ActivityNavBinding, NavViewModel>() {
     override fun initData() {
-        super.initData()
         supportFragmentManager.registerFragmentLifecycleCallbacks(object :
             FragmentManager.FragmentLifecycleCallbacks() {
 

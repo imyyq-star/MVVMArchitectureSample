@@ -14,7 +14,6 @@ public class MainActivity extends DataBindingBaseActivity<ActivityMainBinding, M
 
     @Override
     public void initData() {
-        super.initData();
         observe(mViewModel.liveData, this::onChanged);
     }
 
