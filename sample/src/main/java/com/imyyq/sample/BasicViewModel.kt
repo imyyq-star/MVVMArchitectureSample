@@ -56,6 +56,7 @@ class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
+        // vm 同样有 getXxxFromXxx方法，但是不能在构造方法和 init 方法中使用
         Log.i("BasicViewModel", "commonLog - onCreate: ${getStringFromBundle("test")}")
         Log.i("BasicViewModel", "commonLog - onCreate: ${getStringFromIntent("test")}, ${getIntFromIntent("test2")}")
         Log.i("BasicViewModel", "commonLog - onCreate: ${Arrays.toString(getStringArrayFromIntent("test3"))}")

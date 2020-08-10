@@ -6,6 +6,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import com.imyyq.mvvm.base.BaseViewModel
+import com.imyyq.mvvm.http.HttpRequest
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.data.Repository
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,10 @@ class NetworkViewModel(app: Application) : BaseViewModel<Repository>(app) {
 
     val openLog = View.OnClickListener {
         LogUtil.multiClickToOpenLog(it, 5)
+    }
+
+    val openChangeBaseUrl = View.OnClickListener {
+        HttpRequest.multiClickToChangeBaseUrl(it, 5)
     }
 
     override fun onResume(owner: LifecycleOwner) {

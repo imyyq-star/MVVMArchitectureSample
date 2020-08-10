@@ -19,19 +19,23 @@ class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewMod
         val bundle = getBundle()
         LogUtil.i("BasicActivity", "commonLog - initParam: $bundle")
 
+        // 监听事件总线
         LiveDataBus.observe<List<Int>>(this, "normal", Observer {
             Log.i("BasicActivity", "LiveDataBus - initParam: $it")
         })
 
+        // 监听粘性事件
         LiveDataBus.observeSticky<List<Int>>(this, "sticky", Observer {
             Log.i("BasicActivity", "LiveDataBus - initParam: sticky $it")
         })
     }
 
+    // 支持侧滑返回
     override fun isSupportSwipe(): Boolean {
         return true
     }
 
+    // startActivityForResult 返回结果
     override fun onBackPressed() {
         setResult(Activity.RESULT_OK)
         super.onBackPressed()

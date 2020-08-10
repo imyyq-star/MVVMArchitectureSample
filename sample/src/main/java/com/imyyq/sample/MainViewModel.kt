@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.bus.LiveDataBus
@@ -25,12 +27,10 @@ import com.imyyq.sample.vp.ViewPagerActivity
 class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     val liveData = MutableLiveData<String>()
 
-    val onNetwork = View.OnClickListener {
-        startActivity(NetworkActivity::class.java)
-    }
-
-    val onLoadSir = View.OnClickListener {
-        startActivity(LoadSirActivity::class.java)
+    // 可监听其他 LiveData 的变化
+    val liveData2: LiveData<Int> = Transformations.map(liveData) {
+        // liveData 变量的值做操作
+        return@map 1 // 最后返回结果
     }
 
     val onBasic = View.OnClickListener {
@@ -38,6 +38,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 //        val bundle = Bundle()
 //        bundle.putString("test", "hei")
 //        startActivityForResult(BasicActivity::class.java, bundle)
+        // 可以直接 map 传递各种 key、value，支持 Intent 和 Bundle 所有的数据类型
         startActivity(BasicActivity::class.java, mutableMapOf("test2" to 1, "test" to "hahahah"
         , "test3" to arrayOf("ssss", "bbbb")))
     }
@@ -58,8 +59,16 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         startActivity(ViewPager2Activity::class.java)
     }
 
+    val onNetwork = View.OnClickListener {
+        startActivity(NetworkActivity::class.java)
+    }
+
     val onDatabase = View.OnClickListener {
         startActivity(DBActivity::class.java)
+    }
+
+    val onLoadSir = View.OnClickListener {
+        startActivity(LoadSirActivity::class.java)
     }
 
     val onNav = View.OnClickListener {
@@ -73,7 +82,7 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     }
 
     /**
-     * 默认返回 true，则框架可以帮你缓存自动创建的 Model 实例
+     * 默认返回 true，则框架可以帮你缓存自动创建的 Model 实例，即 Model 会是单例的
      */
     override fun isCacheRepo(): Boolean {
         return super.isCacheRepo()
@@ -89,6 +98,25 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         val app = getApplication<MyApp>()
         LogUtil.i("MainViewModel", "commonLog - onResume: $app")
         liveData.value = "hello"
+
+        // vm 也有一系列的 getXxxFromXxx 方法
+        getStringFromIntent("key")
+        getStringFromBundle("key")
+
+        // 使用 rx 进行耗时操作，可使用 addSubscribe 包裹订阅返回的 Disposable，这样在界面销毁时可同步取消耗时任务
+//        addSubscribe()
+        // retrofit 使用 Callback 进行耗时操作，可使用 addCall 包裹接口返回的 Call，这样在界面销毁时可同步取消耗时任务
+//        addCall()
+
+        // 取消当前 vm 发起的协程、rx、retrofit Callback 三种耗时任务
+//        cancelConsumingTask()
+
+        // 使用协程发起网络请求
+//        launch()
+        // 发起协程
+//        launchUI {  }
+        // 发起协程 Flow
+//        launchFlow {  }
     }
 
     // 。。。。 还有其他的生命周期可复写

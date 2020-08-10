@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.imyyq.sample">
 
     <application
@@ -27,6 +28,12 @@
         <activity android:name=".vp.ViewPager2Activity" />
         <activity android:name=".db.DBActivity" />
         <activity android:name=".nav.NavActivity" />
+
+
+        <meta-data
+            android:name="isRetrofitUseRx"
+            android:value="true"
+            tools:replace="android:value" />
     </application>
 
 </manifest>

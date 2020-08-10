@@ -35,5 +35,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(path: ':MVVMArchitecture')
+//    implementation project(path: ':MVVMArchitecture')
+    implementation 'com.github.imyyq-star:MVVMArch:1.0.2'
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+// json 解析
+    implementation "com.squareup.retrofit2:converter-gson:2.7.2"
+// 使用 rx
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
+
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.10"
+
 }

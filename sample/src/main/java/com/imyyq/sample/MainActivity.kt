@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStoreOwner
+import com.imyyq.mvvm.app.AppActivityManager
 import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.mvvm.binding.viewadapter.view.clickWithTrigger
 import com.imyyq.mvvm.bus.LiveDataBus
@@ -81,6 +82,13 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
             LogUtil.i("MainActivity", "initData: ")
             CaptureAndCropManager.capturePhotoFromCamera(this, 100)
         })
+
+        // GlobalConfig.gIsNeedActivityManager 为 true，则可以使用 AppActivityManager 类获取当前应用的 activity 堆栈
+        AppActivityManager.current()
+
+        // 父类提供了便捷的方法可调用
+//        startActivity(clz, map, bundle)
+//        startActivityForResult(clz, map, bundle)
     }
 
     // 是否开启界面侧滑退出，需对应的主题背景透明

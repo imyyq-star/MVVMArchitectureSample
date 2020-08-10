@@ -29,7 +29,7 @@ ext {
             // 内嵌加载中
             loadSir           : true,
 
-            rxJava2           : false
+            rxJava2           : true
     ]
 
     SDKVersion = [

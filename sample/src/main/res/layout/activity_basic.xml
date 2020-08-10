@@ -28,12 +28,23 @@
                 android:text="@{viewModel.mText}"
                 />
 
+            <!--
+            com/imyyq/mvvm/binding/viewadapter/image/ViewAdapter.kt
+            提供了图片加载的链接，占位图，错误图等配置。
+            xml 是局部配置，要想全局配置占位图和错误图，可通过 GlobalConfig.ImageView 类的变量提供
+            -->
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 url="@{viewModel.mImageUrl}"
+                placeholderRes="@{@drawable/ic_launcher}"
+                errorRes="@{@drawable/error}"
                 />
 
+            <!--
+            有 setOnCheckedChangeListener 方法
+            所以有 app:onCheckedChangeListener 属性
+            -->
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,6 +52,10 @@
                 app:onCheckedChangeListener="@{viewModel.onCheckedChangeListener}"
                 />
 
+            <!--
+            com/imyyq/mvvm/binding/viewadapter/edittext/ViewAdapter.kt
+            提供了 textChanged 功能
+            -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
