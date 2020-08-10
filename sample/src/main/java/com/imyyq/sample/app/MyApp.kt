@@ -27,9 +27,9 @@ class MyApp : BaseApp() {
         )
 
         // 是否支持点击事件间隔一定时间，可局部设置
-        GlobalConfig.gIsClickInterval = true
+        GlobalConfig.Click.gIsClickInterval = true
         // 设定间隔时间，毫秒为单位，默认是 800 毫秒，可局部设置
-        GlobalConfig.gClickIntervalMilliseconds = 700
+        GlobalConfig.Click.gClickIntervalMilliseconds = 700
 
         // 设置为 true 才可以使用框架的 AppActivityManager 类
         GlobalConfig.gIsNeedActivityManager = true
@@ -39,17 +39,17 @@ class MyApp : BaseApp() {
         GlobalConfig.gIsSupportSwipe = true
 
         // viewModel 是否需要调用 startXxxx 等方法，可局部设置
-        GlobalConfig.gIsViewModelNeedStartAndFinish = true
-        GlobalConfig.gIsViewModelNeedStartForResult = true
+        GlobalConfig.StartAndFinish.gIsViewModelNeedStartAndFinish = true
+        GlobalConfig.StartAndFinish.gIsViewModelNeedStartForResult = true
 
         // 加载中对话框相关的配置，可局部设置
-        GlobalConfig.gIsNeedLoadingDialog = true
+        GlobalConfig.LoadingDialog.gIsNeedLoadingDialog = true
         // 是否开启取消对话框后，同步取消耗时任务
-        GlobalConfig.gIsCancelConsumingTaskWhenLoadingDialogCanceled = true
+        GlobalConfig.LoadingDialog.gIsCancelConsumingTaskWhenLoadingDialogCanceled = true
         // 对话框是否可按返回键取消
-        GlobalConfig.gLoadingDialogCancelable = true
+        GlobalConfig.LoadingDialog.gLoadingDialogCancelable = true
         // 对话框是否可点击外部区域取消
-        GlobalConfig.gLoadingDialogCanceledOnTouchOutside = true
+        GlobalConfig.LoadingDialog.gLoadingDialogCanceledOnTouchOutside = true
 //        GlobalConfig.gLoadingDialogLayout = true
 //        GlobalConfig.gLoadingDialogLayoutMsgId = true
         // beta 默认是保存 log 到本地的，如果不需要可以设置为 false
