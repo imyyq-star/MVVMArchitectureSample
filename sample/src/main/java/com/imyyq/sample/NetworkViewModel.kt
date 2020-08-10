@@ -6,9 +6,15 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import com.imyyq.mvvm.base.BaseViewModel
+import com.imyyq.mvvm.http.CommonObserver
 import com.imyyq.mvvm.http.HttpRequest
+import com.imyyq.mvvm.http.HttpRequest.getService
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.data.Repository
+import com.imyyq.sample.data.source.http.service.WanAndroidApiService
+import com.imyyq.sample.entity.DemoEntity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -72,5 +78,39 @@ class NetworkViewModel(app: Application) : BaseViewModel<Repository>(app) {
                 }
             }
         }
+
+        // 使用 Rx 示例
+        getService(WanAndroidApiService::class.java)
+            .demoGet()
+            .subscribeOn(Schedulers.io())
+            // 只有添加了这一句，才可以在页面销毁时取消请求
+            .doOnSubscribe(this::addSubscribe)
+            .map {
+                Thread.sleep(1000)
+                return@map it
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : CommonObserver<List<DemoEntity?>?>() {
+                override fun onResult(result: List<DemoEntity?>?) {
+                    LogUtil.i(
+                        "MainViewModel",
+                        "commonLog - onResume: $mBaseResult"
+                    )
+                }
+
+                override fun onStart() {}
+
+                override fun onSuccess() {
+                    super.onSuccess()
+                }
+
+                override fun onFailed(code: Int, msg: String?) {
+                    super.onFailed(code, msg)
+                }
+
+                override fun onComplete() {
+                    LogUtil.i("MainViewModel", "onComplete: ")
+                }
+            })
     }
 }

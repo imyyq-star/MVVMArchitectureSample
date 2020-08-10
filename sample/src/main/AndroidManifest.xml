@@ -28,12 +28,6 @@
         <activity android:name=".vp.ViewPager2Activity" />
         <activity android:name=".db.DBActivity" />
         <activity android:name=".nav.NavActivity" />
-
-
-        <meta-data
-            android:name="isRetrofitUseRx"
-            android:value="true"
-            tools:replace="android:value" />
     </application>
 
 </manifest>

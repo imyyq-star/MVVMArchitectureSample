@@ -1,7 +1,9 @@
 package com.imyyq.sample.data.source.http.service
 
 import com.imyyq.sample.entity.BaseEntity
+import com.imyyq.sample.entity.DemoEntity
 import com.imyyq.sample.entity.FriendWebSiteEntity
+import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
@@ -18,4 +20,8 @@ interface WanAndroidApiService {
     @GET("https://github.com/")
     fun google(
     ): Call<ResponseBody?>?
+
+    @GET("wxarticle/chapters/json")
+    fun demoGet(): Observable<BaseEntity<List<DemoEntity?>?>?>
+
 }

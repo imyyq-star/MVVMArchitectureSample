@@ -18,11 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="isRetrofitUseRx"
-            android:value="true"
-            tools:replace="android:value" />
     </application>
 
 </manifest>
