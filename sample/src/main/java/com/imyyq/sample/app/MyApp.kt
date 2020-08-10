@@ -5,6 +5,7 @@ import com.imyyq.mvvm.app.BaseApp
 import com.imyyq.mvvm.app.GlobalConfig
 import com.imyyq.mvvm.http.HttpRequest
 import com.imyyq.mvvm.utils.LogUtil
+import com.imyyq.sample.BuildConfig
 import com.imyyq.sample.R
 import com.imyyq.sample.loadsir.callback.EmptyCallback
 import com.imyyq.sample.loadsir.callback.ErrorCallback
@@ -52,8 +53,8 @@ class MyApp : BaseApp() {
         GlobalConfig.LoadingDialog.gLoadingDialogCanceledOnTouchOutside = true
 //        GlobalConfig.gLoadingDialogLayout = true
 //        GlobalConfig.gLoadingDialogLayoutMsgId = true
-        // beta 默认是保存 log 到本地的，如果不需要可以设置为 false
-        GlobalConfig.gIsBetaSaveLog = true
+        // 让 beta 构建时，保存 log 到本地的，如果不需要可以设置为 false，建议提测时设置为 true，release 和 debug 时设置为 false
+        GlobalConfig.gIsSaveLog = BuildConfig.BUILD_TYPE.equals("beta")
 
         // 声明全局的图片加载占位图和错误图，可局部在 xml 中设置
         GlobalConfig.ImageView.placeholderRes = R.drawable.ic_launcher_background
