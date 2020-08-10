@@ -72,4 +72,42 @@ dependencies {
     implementation Deps.bindingAdapterKTX
     implementation Deps.bindingAdapterRv
     implementation Deps.bindingAdapterVp2
+
+    implementation project(path: ':MVVMArchitecture')
+    kapt Deps.roomCompiler
+
+//    implementation 'com.github.imyyq-star:MVVMArch:1.0.2'
+//    // TODO 如果是远程仓库的形式，则要按需自行引入以下相应的库，比如你用到了 Room，就得 implementation room...
+//
+//    // 内存泄露 LeakCanary
+//    debugImplementation Deps.leakCanary2
+//
+//    implementation Deps.lifecycleProcess
+//    implementation Deps.recyclerView
+//
+//    // room 数据库
+//    implementation Deps.roomRuntime
+//    implementation Deps.roomRxJava2
+//    kapt Deps.roomCompiler
+//
+//    // rx
+//    implementation Deps.rxAndroid2
+//    implementation Deps.rxJava2
+//
+//    // 网络请求
+//    implementation Deps.retrofit2
+//    implementation Deps.retrofit2RxJava2
+//    // JSON 解析
+//    implementation Deps.gson
+//    implementation Deps.gsonConverter
+//
+//    // glide 图片加载
+//    implementation Deps.glide
+//    kapt Deps.glideCompiler
+//
+//    // 权限申请
+//    implementation Deps.livePermissions
+//    // 内嵌加载中框架
+//    implementation Deps.loadSir
+
 }
