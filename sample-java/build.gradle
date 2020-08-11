@@ -36,7 +36,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 //    implementation project(path: ':MVVMArchitecture')
-    implementation 'com.github.imyyq-star:MVVMArch:1.0.2'
+    implementation 'com.github.imyyq-star:MVVMArch:1.0.3'
 
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
 // json 解析

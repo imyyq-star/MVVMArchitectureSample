@@ -1,6 +1,7 @@
 buildscript {
-    // 注意：这两个文件的声明顺序不能乱
+    // 注意：以下文件的声明顺序不能乱
     apply from: 'mvvm-config.gradle'
+    apply from: 'MVVMArchitecture/config.gradle'
     apply from: 'MVVMArchitecture/dependencies.gradle'
 
     addRepository(repositories)
