@@ -12,10 +12,26 @@ import com.imyyq.sample.loadsir.callback.ErrorCallback
 import com.imyyq.sample.loadsir.callback.LoadingCallback
 
 class MyApp : BaseApp() {
+    /**
+     * 继承 BaseApp 通常不用复写这个，只要复写 [onMainProcessInit] 或者 [onOtherProcessInit]
+     */
     override fun onCreate() {
         super.onCreate()
-        // 要么继承 BaseApp，要么调用 init 方法，如果没有自己的 application，则可直接使用 BaseApp
+        // 要么继承 BaseApp，要么调用 init 方法，如果没有自己的 application，则可直接在你的 manifest 中注册 BaseApp。
         // BaseApp.initApp(this)
+    }
+
+    /**
+     * 其他进程初始化，[processName] 是进程名
+     */
+    override fun onOtherProcessInit(processName: String) {
+
+    }
+
+    /**
+     * 主进程初始化，即默认的进程，进程名字是你的包名
+     */
+    override fun onMainProcessInit() {
 
         // 网络请求需设置 baseUrl，更多使用详见该类方法
         HttpRequest.mDefaultBaseUrl = "https://www.wanandroid.com/"

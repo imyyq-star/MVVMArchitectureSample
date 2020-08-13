@@ -60,10 +60,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    // 引用框架
-    implementation project(path: ':MVVMArchitecture')
-    // 如果你用到 room，需要声明注解处理器，否则无法使用的。
-    kapt Deps.roomCompiler
 
     // 以下是框架没有封装过的库，只是将具体的地址放到了 MVVMArchitecture/dependencies.gradle 文件中，需要的话，自行引入
     implementation Deps.natigationFragmentKTX
@@ -73,7 +69,9 @@ dependencies {
     implementation Deps.bindingAdapterRv
     implementation Deps.bindingAdapterVp2
 
+    // 源码方式引用框架
     implementation project(path: ':MVVMArchitecture')
+    // 如果你用到 room，需要声明注解处理器，否则无法使用的。
     kapt Deps.roomCompiler
 
 //    implementation 'com.github.imyyq-star:MVVMArch:1.0.2'
