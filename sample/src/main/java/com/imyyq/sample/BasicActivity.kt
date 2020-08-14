@@ -25,7 +25,7 @@ class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewMod
         })
 
         // 监听粘性事件
-        LiveDataBus.observeSticky<List<Int>>(this, "sticky", Observer {
+        LiveDataBus.observeSticky<List<String>>(this, "sticky", Observer {
             Log.i("BasicActivity", "LiveDataBus - initParam: sticky $it")
         })
     }

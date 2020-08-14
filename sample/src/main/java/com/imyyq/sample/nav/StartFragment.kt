@@ -23,8 +23,8 @@ class StartFragment : DataBindingBaseFragment<FragmentStartBinding, StartViewMod
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         LogUtil.i("StartFragment", "commonLog - onViewCreated: $mBinding, $mViewModel")
-        LiveDataBus.observeSticky<List<Int>>(this, "sticky", Observer {
-            Log.i("StartFragment", "commonLog - onViewCreated: sticky $it")
+        LiveDataBus.observeSticky<List<String>>(this, "sticky", Observer {
+            Log.i("StartFragment", "LiveDataBus - onViewCreated: sticky $it")
         })
     }
 }
