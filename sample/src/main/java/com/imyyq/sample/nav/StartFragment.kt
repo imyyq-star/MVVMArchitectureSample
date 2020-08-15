@@ -13,7 +13,7 @@ import com.imyyq.sample.databinding.FragmentStartBinding
 
 
 class StartFragment : DataBindingBaseFragment<FragmentStartBinding, StartViewModel>(
-    R.layout.fragment_start, BR.viewModel
+    R.layout.fragment_start, BR.viewModel, true
 ) {
     override fun onResume() {
         super.onResume()

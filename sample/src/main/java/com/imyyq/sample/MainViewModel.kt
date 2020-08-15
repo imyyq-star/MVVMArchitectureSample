@@ -2,6 +2,7 @@ package com.imyyq.sample
 
 import android.app.Application
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -35,12 +36,12 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 
     val onBasic = View.OnClickListener {
         // 可以携带参数
-//        val bundle = Bundle()
-//        bundle.putString("test", "hei")
-//        startActivityForResult(BasicActivity::class.java, bundle)
+        val bundle = Bundle()
+        bundle.putString("test", "hei")
+        startActivityForResult(BasicActivity::class.java, bundle)
         // 可以直接 map 传递各种 key、value，支持 Intent 和 Bundle 所有的数据类型
-        startActivity(BasicActivity::class.java, mutableMapOf("test2" to 1, "test" to "hahahah"
-        , "test3" to arrayOf("ssss", "bbbb")))
+//        startActivity(BasicActivity::class.java, mutableMapOf("test2" to 1, "test" to "hahahah"
+//        , "test3" to arrayOf("ssss", "bbbb")))
     }
 
     val onListView = View.OnClickListener {
@@ -139,14 +140,14 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     // 在 BaseViewModel 中也有相应的方法
 
     override fun onActivityResult(resultCode: Int, intent: Intent) {
-        LogUtil.i("MainViewModel", "onActivityResult: $resultCode, $intent")
+        LogUtil.i("MainViewModel", "onActivityResult: $resultCode, ${intent.getStringExtra("heihei")}")
     }
 
     override fun onActivityResultOk(intent: Intent) {
-        super.onActivityResultOk(intent)
+        LogUtil.i("MainViewModel", "onActivityResultOk: ${intent.getStringExtra("heihei")}")
     }
 
     override fun onActivityResultCanceled(intent: Intent) {
-        super.onActivityResultCanceled(intent)
+        LogUtil.i("MainViewModel", "onActivityResultCanceled: ${intent.getStringExtra("heihei")}")
     }
 }
