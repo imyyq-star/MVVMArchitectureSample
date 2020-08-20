@@ -145,14 +145,14 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     // 在 BaseViewModel 中也有相应的方法
 
     override fun onActivityResult(resultCode: Int, intent: Intent) {
-        LogUtil.i("MainViewModel", "onActivityResult: $resultCode, $intent")
+        LogUtil.i("MainViewModel", "onActivityResult: $resultCode, ${intent.getStringExtra("heihei")}")
     }
 
     override fun onActivityResultOk(intent: Intent) {
-        super.onActivityResultOk(intent)
+        LogUtil.i("MainViewModel", "onActivityResultOk: ${intent.getStringExtra("heihei")}")
     }
 
     override fun onActivityResultCanceled(intent: Intent) {
-        super.onActivityResultCanceled(intent)
+        LogUtil.i("MainViewModel", "onActivityResultCanceled: ${intent.getStringExtra("heihei")}")
     }
 }

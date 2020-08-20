@@ -4,14 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.imyyq.mvvm.base.BaseModel
-import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.base.ViewBindingBaseFragment
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.R
 import com.imyyq.sample.databinding.FragmentSecondBinding
 
-class SecondFragment : ViewBindingBaseFragment<FragmentSecondBinding, BaseViewModel<BaseModel>>() {
+class SecondFragment : ViewBindingBaseFragment<FragmentSecondBinding, StartViewModel>(true) {
     val args: SecondFragmentArgs by navArgs()
 
     override fun initData() {

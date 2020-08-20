@@ -1,6 +1,7 @@
 package com.imyyq.sample
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.Observer
 import com.imyyq.mvvm.base.DataBindingBaseActivity
@@ -37,7 +38,13 @@ class BasicActivity : DataBindingBaseActivity<ActivityBasicBinding, BasicViewMod
 
     // startActivityForResult 返回结果
     override fun onBackPressed() {
-        setResult(Activity.RESULT_OK)
-        super.onBackPressed()
+        val intent = Intent()
+        intent.putExtra("heihei", "basic")
+//        mViewModel.setResult(Activity.RESULT_CANCELED, mutableMapOf("heihei" to "map"))
+//        mViewModel.finish(Activity.RESULT_CANCELED, mutableMapOf("heihei" to "map"))
+//        mViewModel.finish(Activity.RESULT_CANCELED, intent)
+        mViewModel.setResult(Activity.RESULT_CANCELED, mutableMapOf("heihei" to "map"))
+        mViewModel.finish()
+//        super.onBackPressed()
     }
 }
