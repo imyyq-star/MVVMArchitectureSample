@@ -7,6 +7,13 @@
 ### 1. Download Zip 下载本项目
 解压后 MVVMArchitecture 目录将为空目录，因为直接 Download 的话是没有 git 仓库的。
 
+将以下三个文件删除：
+```
+build.gradle
+sample/build.gradle
+sample-java/build.gradle
+```
+
 将以下三个文件，重命名为 build.gradle，覆盖掉原来的文件。
 ```
 build-for-download.gradle
