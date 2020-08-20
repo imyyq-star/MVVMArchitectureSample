@@ -112,6 +112,13 @@
                 android:text="发送事件"
                 />
 
+            <Button
+                onClickCommand="@{viewModel.onNoViewModelActivity}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="打开没有 vm 的 activity"
+                />
+
         </LinearLayout>
     </ScrollView>
 </layout>

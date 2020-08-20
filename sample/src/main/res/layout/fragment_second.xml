@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
 
     <TextView
@@ -9,4 +10,12 @@
         android:layout_height="wrap_content"
         android:text="second"
         />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开没有 vm 的 fragment"
+        />
+
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.imyyq.sample
 import android.app.Application
 import android.content.Intent
 import android.view.View
+import androidx.collection.arrayMapOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -39,8 +40,9 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
 //        bundle.putString("test", "hei")
 //        startActivityForResult(BasicActivity::class.java, bundle)
         // 可以直接 map 传递各种 key、value，支持 Intent 和 Bundle 所有的数据类型
-        startActivity(BasicActivity::class.java, mutableMapOf("test2" to 1, "test" to "hahahah"
-        , "test3" to arrayOf("ssss", "bbbb")))
+        startActivity(BasicActivity::class.java, arrayMapOf("test2" to 1, "test" to "hahahah"
+        , "test3" to arrayOf("ssss", "bbbb"))
+        )
     }
 
     val onListView = View.OnClickListener {
@@ -79,6 +81,10 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         LiveDataBus.send("normal", listOf("我是1", "我是2"))
         LiveDataBus.send("forever", listOf("我是3", "我是4"))
         LiveDataBus.sendSticky("sticky", listOf("我是5", "我是6"))
+    }
+
+    val onNoViewModelActivity = View.OnClickListener {
+        startActivity(TestNoViewModelActivity::class.java)
     }
 
     /**

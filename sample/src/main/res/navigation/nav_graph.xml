@@ -48,4 +48,10 @@
         <deepLink app:uri="www.example.com/user/{userName}" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/test_no_view_model"
+        android:name="com.imyyq.sample.nav.TestNoViewModelFragment"
+        >
+    </fragment>
 </navigation>

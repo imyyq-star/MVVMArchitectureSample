@@ -36,6 +36,17 @@ android {
         beta {
             initWith release
         }
+
+        debug {
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+        }
+    }
+
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 8
+        jumboMode = true
     }
 
     // 开启 DataBinding 和 ViewBinding

@@ -28,6 +28,7 @@
         <activity android:name=".vp.ViewPager2Activity" />
         <activity android:name=".db.DBActivity" />
         <activity android:name=".nav.NavActivity" />
+        <activity android:name=".TestNoViewModelActivity" />
     </application>
 
 </manifest>
