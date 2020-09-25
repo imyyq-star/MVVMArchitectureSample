@@ -3,14 +3,15 @@ package com.imyyq.sample.rv
 import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.GridLayoutManager
+import com.imyyq.mvvm.base.AppBarBaseViewModel
 import com.imyyq.mvvm.base.BaseModel
-import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.sample.BR
 import com.imyyq.sample.R
+import com.imyyq.sample.app.MyCommonAppBarProcessor2
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 import me.tatarka.bindingcollectionadapter2.map
 
-class RecyclerViewViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
+class RecyclerViewViewModel(app: Application) : AppBarBaseViewModel<BaseModel, MyCommonAppBarProcessor2>(app) {
     val observableList = ObservableArrayList<Any>()
 
     val multipleItems = OnItemBindClass<Any>().apply {

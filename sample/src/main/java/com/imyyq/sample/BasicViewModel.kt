@@ -6,14 +6,16 @@ import android.view.View
 import android.widget.CompoundButton
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
+import com.imyyq.mvvm.base.AppBarBaseViewModel
 import com.imyyq.mvvm.base.BaseModel
 import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.binding.command.BindingConsumer
 import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.SingleLiveEvent
+import com.imyyq.sample.app.MyCommonAppBarProcessor
 import java.util.*
 
-class BasicViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
+class BasicViewModel(app: Application) : AppBarBaseViewModel<BaseModel, MyCommonAppBarProcessor>(app) {
     // 使用 ObservableXXX
     val mText = ObservableField<String>()
     // 还可以使用 LiveData

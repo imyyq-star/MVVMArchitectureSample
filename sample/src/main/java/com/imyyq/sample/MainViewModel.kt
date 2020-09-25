@@ -8,11 +8,13 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.imyyq.mvvm.base.AppBarBaseViewModel
 import com.imyyq.mvvm.base.BaseModel
-import com.imyyq.mvvm.base.BaseViewModel
 import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.LogUtil
+import com.imyyq.mvvm.utils.ToastUtil
 import com.imyyq.sample.app.MyApp
+import com.imyyq.sample.app.MyCommonAppBarProcessor
 import com.imyyq.sample.db.DBActivity
 import com.imyyq.sample.loadsir.LoadSirActivity
 import com.imyyq.sample.nav.NavActivity
@@ -25,7 +27,7 @@ import com.imyyq.sample.vp.ViewPagerActivity
  *
  * 如果没有数据仓库，可以使用 BaseModel 作为 Model 层。
  */
-class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
+class MainViewModel(app: Application) : AppBarBaseViewModel<BaseModel, MyCommonAppBarProcessor>(app) {
     val liveData = MutableLiveData<String>()
 
     // 可监听其他 LiveData 的变化
@@ -87,6 +89,14 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
         startActivity(TestNoViewModelActivity::class.java)
     }
 
+    val onChangeTitle = View.OnClickListener {
+        mAppBarProcessor.title.value = "修改了标题"
+    }
+
+    val onAppBarRightBtnClick = View.OnClickListener {
+        ToastUtil.showShortToast("右边的按钮被点击了")
+    }
+
     /**
      * 默认返回 true，则框架可以帮你缓存自动创建的 Model 实例，即 Model 会是单例的
      */
@@ -99,6 +109,12 @@ class MainViewModel(app: Application) : BaseViewModel<BaseModel>(app) {
     /**
      * vm 可以感知 v 的生命周期
      */
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        // 设定标题栏的控件监听
+        mAppBarProcessor.onAppBarRightBtnClick.set(onAppBarRightBtnClick)
+    }
+
     override fun onResume(owner: LifecycleOwner) {
         // 注意！！！！！ vm 层绝对不可以引用 v 层的实例，需要 context 要么通过 application，要么通过 AppActivityManager
         val app = getApplication<MyApp>()
