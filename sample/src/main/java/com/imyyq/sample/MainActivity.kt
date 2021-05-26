@@ -84,7 +84,7 @@ class MainActivity : DataBindingBaseActivity<ActivityMainBinding, MainViewModel>
         })
 
         // GlobalConfig.gIsNeedActivityManager 为 true，则可以使用 AppActivityManager 类获取当前应用的 activity 堆栈
-        AppActivityManager.current()
+        AppActivityManager.currentActivity()
 
         // 父类提供了便捷的方法可调用
 //        startActivity(clz, map, bundle)
