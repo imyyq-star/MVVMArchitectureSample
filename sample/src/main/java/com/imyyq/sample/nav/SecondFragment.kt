@@ -4,14 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.imyyq.mvvm.base.BaseModel
-import com.imyyq.mvvm.base.BaseViewModel
-import com.imyyq.mvvm.base.ViewBindingBaseFragment
+import com.imyyq.mvvm.base.AppBarViewBindingBaseFragment
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.R
 import com.imyyq.sample.databinding.FragmentSecondBinding
+import com.imyyq.sample.databinding.LayoutCommonAppBarBinding
 
-class SecondFragment : ViewBindingBaseFragment<FragmentSecondBinding, BaseViewModel<BaseModel>>() {
+class SecondFragment : AppBarViewBindingBaseFragment<FragmentSecondBinding, StartViewModel, LayoutCommonAppBarBinding>() {
     val args: SecondFragmentArgs by navArgs()
 
     override fun initData() {
@@ -26,4 +25,9 @@ class SecondFragment : ViewBindingBaseFragment<FragmentSecondBinding, BaseViewMo
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentSecondBinding = FragmentSecondBinding.inflate(inflater, container, false)
+
+    override fun initAppBarBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = LayoutCommonAppBarBinding.inflate(inflater, container, false)
 }

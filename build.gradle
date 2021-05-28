@@ -8,7 +8,7 @@ buildscript {
 
     dependencies {
         // 根据自身 AS 的版本而不同，不同的版本，根目录的 gradle 目录也不一样
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath Deps.kotlinPlugin
         classpath Deps.natigationSafeArgsPlugin
     }

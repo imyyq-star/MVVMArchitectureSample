@@ -119,6 +119,13 @@
                 android:text="打开没有 vm 的 activity"
                 />
 
+            <Button
+                onClickCommand="@{viewModel.onChangeTitle}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="修改标题"
+                />
+
         </LinearLayout>
     </ScrollView>
 </layout>
