@@ -1,9 +1,7 @@
 package com.imyyq.sample.nav
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.imyyq.mvvm.base.ViewBindingBaseActivity
@@ -66,7 +64,4 @@ class NavActivity : ViewBindingBaseActivity<ActivityNavBinding, NavViewModel>() 
 
         }, true)
     }
-
-    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?): ActivityNavBinding =
-        ActivityNavBinding.inflate(inflater)
 }
