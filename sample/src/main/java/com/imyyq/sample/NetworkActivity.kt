@@ -4,7 +4,7 @@ import com.imyyq.mvvm.base.DataBindingBaseActivity
 import com.imyyq.sample.databinding.ActivityNetworkBinding
 
 class NetworkActivity : DataBindingBaseActivity<ActivityNetworkBinding, NetworkViewModel>(
-    R.layout.activity_network, BR.viewModel
+    BR.viewModel, R.layout.activity_network
 ) {
     /**
      * 如果你的 vm 是带有仓库的，那么需要自己实现 factory，注入仓库实例。

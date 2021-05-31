@@ -6,6 +6,6 @@ import com.imyyq.sample.R
 import com.imyyq.sample.databinding.ActivityDbBinding
 
 class DBActivity : DataBindingBaseActivity<ActivityDbBinding, DBViewModel>(
-    R.layout.activity_db, BR.viewModel
+    BR.viewModel, R.layout.activity_db,
 ) {
 }

@@ -19,7 +19,7 @@ import com.imyyq.sample.databinding.LayoutCommonAppBarBinding
 import com.kingja.loadsir.callback.Callback
 
 class MainActivity : AppBarDataBindingBaseActivity<ActivityMainBinding, MainViewModel, LayoutCommonAppBarBinding, MyCommonAppBarProcessor>(
-    R.layout.activity_main, BR.viewModel, BR.appBarProcessor
+    BR.viewModel, BR.appBarProcessor,
 ) {
     // 除了主 vm，还可以有其他的 vm，来自 fragment-ktx 的 viewModels 扩展，可快速一行代码创建实例
     private val mTestViewModel by viewModels<TestViewModel>()

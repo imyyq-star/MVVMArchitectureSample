@@ -1,7 +1,5 @@
 package com.imyyq.sample.nav
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.imyyq.mvvm.base.AppBarViewBindingBaseFragment
@@ -20,14 +18,4 @@ class SecondFragment : AppBarViewBindingBaseFragment<FragmentSecondBinding, Star
     override fun initViewObservable() {
         mBinding.btn.setOnClickListener { Navigation.findNavController(it).navigate(R.id.test_no_view_model) }
     }
-
-    override fun initBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentSecondBinding = FragmentSecondBinding.inflate(inflater, container, false)
-
-    override fun initAppBarBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = LayoutCommonAppBarBinding.inflate(inflater, container, false)
 }

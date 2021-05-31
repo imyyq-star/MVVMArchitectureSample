@@ -17,7 +17,7 @@ import com.imyyq.sample.databinding.LayoutCommonAppBarBinding
  *
  */
 class BasicActivity : AppBarDataBindingBaseActivity<ActivityBasicBinding, BasicViewModel, LayoutCommonAppBarBinding, MyCommonAppBarProcessor>(
-    R.layout.activity_basic, BR.viewModel, BR.appBarProcessor
+    BR.viewModel, BR.appBarProcessor
 ) {
     override fun initParam() {
         val bundle = getBundle()

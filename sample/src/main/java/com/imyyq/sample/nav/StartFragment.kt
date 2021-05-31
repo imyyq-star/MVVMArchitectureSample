@@ -8,14 +8,13 @@ import com.imyyq.mvvm.base.AppBarDataBindingBaseFragment
 import com.imyyq.mvvm.bus.LiveDataBus
 import com.imyyq.mvvm.utils.LogUtil
 import com.imyyq.sample.BR
-import com.imyyq.sample.R
 import com.imyyq.sample.app.MyCommonAppBarProcessor
 import com.imyyq.sample.databinding.FragmentStartBinding
 import com.imyyq.sample.databinding.LayoutCommonAppBarBinding
 
 
 class StartFragment : AppBarDataBindingBaseFragment<FragmentStartBinding, StartViewModel, LayoutCommonAppBarBinding, MyCommonAppBarProcessor>(
-    R.layout.fragment_start, BR.viewModel, BR.appBarProcessor, sharedViewModel = true
+    BR.viewModel, BR.appBarProcessor, sharedViewModel = true
 ) {
     override fun onResume() {
         super.onResume()

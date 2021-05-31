@@ -76,8 +76,6 @@ class MyApp : BaseApp() {
         GlobalConfig.ImageView.placeholderRes = R.drawable.ic_launcher_background
         GlobalConfig.ImageView.errorRes = R.drawable.ic_launcher_background
 
-        GlobalConfig.AppBar.gAppBarLayoutId = R.layout.layout_common_app_bar
-
         // 可追踪应用的状态是在前台还是后台，注意：锁屏也是后台。
         AppStateTracker.track(object : AppStateTracker.AppStateChangeListener {
             override fun appTurnIntoForeground() {
